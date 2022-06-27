@@ -1,0 +1,18 @@
+@use "../../styles/variables.scss" as var;
+
+.Button {
+  border: solid 1px var.$primary;
+  border-radius: 6px;
+  font-family: inherit;
+  width: 90px;
+  padding: 0.8rem;
+  cursor: pointer;
+  &--primary {
+    background-color: var.$primary;
+    color: white;
+  }
+  &--secondary {
+    background-color: white;
+    color: var.$primary;
+  }
+}
