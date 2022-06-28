@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Nav, Header } from "../../components";
+import { Header, Hero } from "../../components";
 
 export default function Home() {
   return (
     <article className="Home">
-      {/* <Nav /> */}
       <Header />
+      <Hero />
     </article>
   );
 }

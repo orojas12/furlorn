@@ -1,63 +1,58 @@
 @use "../../styles/variables" as var;
 
-.Header {
+.Header-container {
+  margin: 0 auto;
   font-size: 1.6rem;
-}
+  max-width: var.$max-width;
 
-.Header__top {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.6rem;
-  width: 100%;
-}
+  &__top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.6rem;
+    width: 100%;
+  }
 
-.Header__logo {
-  height: 28px;
-  width: auto;
-  align-self: center;
-}
+  &__logo {
+    height: 28px;
+    width: auto;
+    align-self: center;
+  }
 
-.Header__list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 24px;
-  width: 350px;
-  list-style: none;
-  padding: 0;
-}
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 24px;
+    width: 350px;
+    list-style: none;
+    padding: 0;
+  }
 
-.Header__link {
-  display: none;
-  padding: 0.8rem 0.8rem;
-  text-decoration: none;
-}
+  &__link {
+    display: none;
+    padding: 0.8rem 0.8rem;
+    text-decoration: none;
+  }
 
-.Header__buttons {
-  display: none;
+  &__buttons {
+    display: none;
+
+    * {
+      margin-left: 1rem;
+    }
+  }
 }
 
 @media screen and (min-width: var.$md) {
-  .Header {
+  .Header-container {
     flex-direction: row;
-  }
 
-  .Header__menu,
-  .Header__btn .Header__btn--menu,
-  .Header__menu-icon-bar {
-    display: none;
-  }
-
-  .Header__link {
-    display: block;
-  }
-
-  .Header__buttons {
-    display: block;
-    * {
-      margin-left: 1rem;
+    &__buttons,
+    &__link,
+    &__buttons {
+      display: block;
     }
   }
 }
