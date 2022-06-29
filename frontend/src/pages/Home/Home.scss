@@ -1,6 +1,6 @@
 @use "../../styles/variables.scss" as var;
 
-.Hero-container {
+.Home .hero-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,7 +40,7 @@
 }
 
 @media screen and (min-width: var.$lg) {
-  .Hero-container {
+  .Home .hero-container {
     flex-direction: row-reverse;
     justify-content: space-between;
 
