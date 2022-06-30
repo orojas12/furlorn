@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import logo from "../../assets/furlorn_logo.svg";
+import logo from "../../assets/icons/furlorn_logo.svg";
 import Nav from "../Nav/Nav";
 import NavToggle from "../Nav/NavToggle";
 import Button from "../Button/Button";
