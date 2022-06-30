@@ -7,7 +7,7 @@
   align-items: center;
   margin: 0 auto;
   padding: 0 1.6rem;
-  height: 70vh;
+  height: 80vh;
   max-width: 1250px;
 
   &__img {
@@ -15,7 +15,6 @@
     max-width: 600px;
     height: auto;
     object-fit: contain;
-    margin-top: 8rem;
   }
 
   .heading-container {
@@ -36,6 +35,17 @@
       font-weight: 400;
       margin: 1rem 0 3rem;
     }
+  }
+}
+
+#about {
+  background-color: var.$primary;
+
+  .about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem 0 6rem;
   }
 }
 
