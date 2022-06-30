@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header, Button, Card } from "../../components";
+import { Header, Button, Card, Form, SignUpForm } from "../../components";
 
 import heroImg from "../../assets/images/hero-img.png";
 import neighborhoodIcon from "../../assets/icons/neighborhood-icon.svg";
@@ -89,7 +89,7 @@ export default function Home() {
               </figcaption>
             </figure>
           </div>
-          <div className="form-container"></div>
+          <SignUpForm />
         </div>
       </section>
     </article>
