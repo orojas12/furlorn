@@ -66,13 +66,18 @@
     align-items: center;
   }
 
+  .statement-container {
+    margin: 0 auto;
+    width: 85%;
+    max-width: 500px;
+  }
+
   .statement {
     display: flex;
-    flex-direction: flex;
+    flex-direction: row;
     align-items: center;
-    margin: 3rem;
-    width: 85%;
-    max-width: 600px;
+    margin: 6rem 0;
+    width: 100%;
 
     &__img {
       width: 40px;
