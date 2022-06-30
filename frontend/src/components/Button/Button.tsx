@@ -6,8 +6,8 @@ export interface IButtonProps {
   type: "button" | "submit" | "reset" | undefined;
   btnStyle: "primary" | "secondary";
   width?: string;
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
-  children: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  children?: React.ReactNode;
 }
 
 export default function Button(props: IButtonProps) {

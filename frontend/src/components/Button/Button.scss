@@ -4,13 +4,16 @@
   border: solid 1px var.$primary;
   border-radius: 6px;
   font-family: inherit;
+  font-size: inherit;
   padding: 0.8rem;
   width: 100%;
   cursor: pointer;
+
   &--primary {
     background-color: var.$primary;
     color: white;
   }
+
   &--secondary {
     background-color: white;
     color: var.$primary;
