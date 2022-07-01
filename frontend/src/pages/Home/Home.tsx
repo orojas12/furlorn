@@ -101,28 +101,20 @@ export default function Home() {
       <footer>
         <section id="footer">
           <div className="footer-container">
-            <ul className="footer-list">
-              <li>
-                <a className="footer-list__link" href="">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a className="footer-list__link" href="">
-                  Terms &amp; Conditions
-                </a>
-              </li>
-              <li>
-                <a className="footer-list__link" href="">
-                  License
-                </a>
-              </li>
-              <li>
-                <a className="footer-list__link" href="">
-                  About the author
-                </a>
-              </li>
-            </ul>
+            <div className="footer-links">
+              <a className="footer-links__link" href="">
+                Privacy Policy
+              </a>
+              <a className="footer-links__link" href="">
+                Terms &amp; Conditions
+              </a>
+              <a className="footer-links__link" href="">
+                License
+              </a>
+              <a className="footer-links__link" href="">
+                About the author
+              </a>
+            </div>
             <p className="copyright">
               &copy; 2022 Oscar Rojas. All rights reserved.
             </p>

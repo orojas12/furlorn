@@ -8,6 +8,8 @@
   }
 
   #hero {
+    padding-top: 0;
+
     .hero-container {
       display: flex;
       flex-direction: column;
@@ -111,16 +113,13 @@
       max-width: 1600px;
     }
 
-    .footer-list {
+    .footer-links {
       display: flex;
       flex-direction: column;
       list-style: none;
       padding: 0;
+      margin-bottom: 3rem;
       text-align: center;
-
-      li {
-        padding: 1rem;
-      }
 
       &__link {
         text-decoration: none;
@@ -134,7 +133,7 @@
 @media screen and (min-width: var.$md) {
   .Home {
     #footer .footer-container {
-      .footer-list {
+      .footer-links {
         flex-direction: row;
       }
     }
