@@ -33,12 +33,13 @@
         max-width: 500px;
 
         &__heading {
-          font-size: 3rem;
+          font-size: 3.2rem;
           font-weight: 500;
           margin: 1rem 0;
         }
 
         &__subheading {
+          font-size: 1.8rem;
           font-weight: 400;
           margin: 1rem 0 3rem;
         }
@@ -54,7 +55,7 @@
       flex-direction: column;
       align-items: center;
       margin: auto;
-      max-width: 1250px;
+      max-width: 1600px;
     }
   }
 
@@ -62,23 +63,28 @@
     background-color: var.$secondary;
 
     .signup-container {
-      max-width: 1250px;
+      max-width: 1600px;
       display: flex;
       flex-direction: column;
+      justify-content: space-around;
       align-items: center;
       margin: auto;
     }
 
     .statement-container {
-      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
       max-width: 500px;
+      height: 400px;
+      margin-bottom: 4rem;
     }
 
     .statement {
+      margin: 0;
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin: 6rem 0;
       width: 100%;
 
       &__img {
@@ -91,25 +97,81 @@
       }
     }
   }
+
+  #footer {
+    background-color: var.$dark;
+    color: white;
+
+    .footer-container {
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      max-width: 1600px;
+    }
+
+    .footer-list {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      text-align: center;
+
+      li {
+        padding: 1rem;
+      }
+
+      &__link {
+        text-decoration: none;
+        padding: 1rem;
+        color: inherit;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: var.$md) {
+  .Home {
+    #footer .footer-container {
+      .footer-list {
+        flex-direction: row;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: var.$lg) {
-  .Home .hero-container {
-    flex-direction: row-reverse;
-    justify-content: space-between;
+  .Home {
+    section {
+      padding: 10rem 6rem;
+    }
+    #hero .hero-container {
+      flex-direction: row-reverse;
+      justify-content: space-between;
 
-    &__img {
-      width: 50%;
-      margin: 14rem 0 0 2rem;
+      &__img {
+        width: 50%;
+        margin: 14rem 0 0 2rem;
+      }
+
+      .heading-container {
+        justify-content: center;
+        text-align: left;
+      }
     }
 
-    .heading-container {
-      justify-content: center;
-      text-align: left;
+    #about .about-container {
+      flex-direction: row;
+      justify-content: space-around;
     }
   }
-  #about .about-container {
-    flex-direction: row;
-    justify-content: space-around;
+}
+
+@media screen and (min-width: var.$xl) {
+  .Home {
+    #signup .signup-container {
+      flex-direction: row;
+    }
   }
 }
