@@ -2,13 +2,15 @@ import * as React from "react";
 import Form from "./Form";
 import "./SignUpForm.scss";
 
-export interface ISignUpFormProps {}
+export interface ISignUpFormProps {
+  title?: string;
+}
 
-export default function SignUpForm(props: ISignUpFormProps) {
+export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
   return (
     <div className="SignUpForm">
       <Form
-        title="Sign up and search your neighborhood"
+        title={title}
         fields={{
           username: "text",
           password: "password",
