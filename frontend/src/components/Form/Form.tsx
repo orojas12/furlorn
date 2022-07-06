@@ -29,7 +29,7 @@ function generateFormInputs(fields: IFormProps["fields"]) {
           {splitCamelCase(capitalizeFirstLetter(label)).join(" ")}
         </div>
         <input type={type} name={label} />
-        <div className="field__error">Error message</div>
+        <div className="field__error"></div>
       </label>
     );
   });
