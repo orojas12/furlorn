@@ -22,7 +22,7 @@ export default function Navbar({ type, children = null }: INavbarProps) {
       <div className="Nav__top">
         <div className="logo">
           <Link to="/">
-            <img className="Header-container__logo" src={logo} alt="Logo" />
+            <img style={{ height: "3.6rem" }} src={logo} alt="Logo" />
           </Link>
         </div>
         {children}
