@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Header, SignUpForm } from "../../components";
 import "./SignUp.scss";
 

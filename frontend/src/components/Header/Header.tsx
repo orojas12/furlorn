@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Navbar from "../Navbar/Navbar";
 
@@ -9,8 +9,8 @@ export default function Header() {
     <header className="Header">
       <div className="Header-container">
         <Navbar type="horizontal">
-          <a href="#about">about</a>
-          <a href="#signup">view lost pets</a>
+          <Link to="/login">Log In</Link>
+          <Link to="/signup">Sign Up</Link>
         </Navbar>
       </div>
     </header>

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Header, Button, Card, SignUpForm } from "../../components";
 
 import heroImg from "../../assets/images/hero-img.png";
