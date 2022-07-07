@@ -1,0 +1,12 @@
+.LoginForm {
+  width: 100%;
+  max-width: 500px;
+
+  &__footer {
+    margin-top: 2rem;
+    text-align: center;
+    a {
+      text-decoration: none;
+    }
+  }
+}
