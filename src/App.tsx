@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./lib/auth";
 
 import "./App.scss";
 
@@ -10,13 +11,15 @@ const Login = React.lazy(() => import("./pages/Login/Login"));
 function App() {
   return (
     <div className="App">
-      <React.Suspense fallback={<h1>Loading...</h1>}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
-        </Routes>
-      </React.Suspense>
+      <AuthProvider>
+        <React.Suspense fallback={<h1>Loading...</h1>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+          </Routes>
+        </React.Suspense>
+      </AuthProvider>
     </div>
   );
 }
