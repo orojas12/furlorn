@@ -5,7 +5,7 @@ const BASE_URL = "http://127.0.0.1:8000/api";
 
 type AuthContextType = ReturnType<typeof useAuthAPI>;
 
-interface ILoginResponse {
+interface IAuthResponse {
   ok: boolean;
   status: number | null;
   error: string;
@@ -71,7 +71,7 @@ function useAuthAPI() {
   async function login(
     username: string,
     password: string
-  ): Promise<ILoginResponse> {
+  ): Promise<IAuthResponse> {
     let res;
     let data;
     let user;
@@ -108,8 +108,27 @@ function useAuthAPI() {
     username: string,
     password: string,
     nickname: string | null
-  ) {
-    return;
+  ): Promise<IAuthResponse> {
+    let res;
+    try {
+      res = await fetch(BASE_URL + "/register", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password, nickname }),
+      });
+    } catch (err) {
+      console.error(err);
+      return {
+        ok: false,
+        status: null,
+        error: "Something went wrong. Please try again later.",
+      };
+    }
+    const data = await res.json();
+    return { ok: res.ok, status: res.status, error: data.detail || "" };
   }
 
   function logout() {
