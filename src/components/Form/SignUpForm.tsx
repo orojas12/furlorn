@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../lib/auth";
 import { Form, Field } from "../";
 import "./SignUpForm.scss";
@@ -10,8 +10,10 @@ export interface ISignUpFormProps {
 
 export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
   const auth = useAuth();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [nickname, setNickname] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -19,11 +21,12 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
   const [formError, setFormError] = useState("");
 
   async function onSubmit() {
-    const res = await auth.login(username, password);
+    const res = await auth.signup(username, password, nickname);
     if (!res.ok) {
       setFormError(res.error);
       return;
     }
+    navigate("/login", { replace: true });
   }
 
   return (
