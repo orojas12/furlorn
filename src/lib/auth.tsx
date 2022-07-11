@@ -20,11 +20,11 @@ function useAuthAPI() {
   });
   const [accessToken, setAccessToken] = useState(() => {
     const item = localStorage.getItem("accessToken");
-    return item ? JSON.parse(item) : null;
+    return item;
   });
   const [refreshToken, setRefreshToken] = useState(() => {
     const item = localStorage.getItem("refreshToken");
-    return item ? JSON.parse(item) : null;
+    return item;
   });
 
   useEffectOnUpdate(() => {
