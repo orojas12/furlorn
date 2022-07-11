@@ -20,7 +20,69 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [formError, setFormError] = useState("");
 
+  function usernameIsValid() {
+    /* 
+      Full string contains only lowercase and uppercase letters 
+      from A-Z, numbers 0-9, -, and _. 
+    */
+    const regex = /^[a-zA-Z0-9-_]{2,32}$/;
+
+    const isValid = Boolean(username.match(regex));
+    if (!isValid) {
+      setUsernameError(
+        "Username must be 2-32 characters and may contain letters, numbers, dashes, and underscores."
+      );
+    }
+    return isValid;
+  }
+
+  function passwordIsValid() {
+    /* 
+      Full string is at least 8 characters long and contains at 
+      least 1 uppercase letter, 1 lowercase letter, and 1 number.
+      Can contain special characters.
+    */
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+    const isValid = Boolean(password.match(regex));
+    if (!isValid) {
+      setPasswordError(
+        "Password must be 8-128 characters and must contain at least one uppercase letter, " +
+          "one lowercase letter, and one number. May contain special characters."
+      );
+    }
+    return isValid;
+  }
+
+  function passwordsMatch() {
+    const isValid = password === confirmPassword;
+    if (!isValid) {
+      setConfirmPasswordError("Passwords do not match.");
+    }
+    return isValid;
+  }
+
+  function formIsValid(validators: Array<() => boolean>) {
+    let errors = 0;
+    validators.forEach((isValid) => {
+      if (!isValid()) {
+        errors++;
+      }
+    });
+    return errors === 0;
+  }
+
+  function clearErrors() {
+    setUsernameError("");
+    setPasswordError("");
+    setConfirmPasswordError("");
+  }
+
   async function onSubmit() {
+    clearErrors();
+    if (!formIsValid([usernameIsValid, passwordIsValid, passwordsMatch])) {
+      return;
+    }
     const res = await auth.signup(username, password, nickname);
     if (!res.ok) {
       setFormError(res.error);
@@ -48,6 +110,7 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           error={usernameError}
+          required
         />
         <Field
           label="nickname"
@@ -61,6 +124,7 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           error={passwordError}
+          required
         />
         <Field
           label="confirmPassword"
@@ -68,6 +132,7 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           error={confirmPasswordError}
+          required
         />
       </Form>
     </div>
