@@ -1,5 +1,6 @@
 import React from "react";
 import { capitalizeFirstLetter, splitCamelCase } from "../../lib/utils";
+import "./Field.scss";
 
 export interface IFieldProps {
   label: string;
@@ -17,12 +18,12 @@ export default function Field({
   error,
 }: IFieldProps) {
   return (
-    <label htmlFor={label} className="field">
-      <div className="field__label">
+    <label htmlFor={label} className="Field">
+      <div className="Field__label">
         {splitCamelCase(capitalizeFirstLetter(label)).join(" ")}
       </div>
       <input type={type} name={label} onChange={onChange} value={value} />
-      <div className="field__error">{error}</div>
+      <div className="Field__error">{error}</div>
     </label>
   );
 }
