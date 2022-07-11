@@ -96,9 +96,9 @@ function useAuthAPI() {
 
     data = await res.json();
     if (res.ok) {
-      setAccessToken(data.accessToken);
-      setRefreshToken(data.refreshToken);
-      user = await getUser(data.accessToken);
+      setAccessToken(data.access);
+      setRefreshToken(data.refresh);
+      user = await getUser(data.access);
       setUser(user);
     }
     return { ok: res.ok, status: res.status, error: data.detail || "" };
