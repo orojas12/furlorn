@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../lib/auth";
-import Form from "./Form";
+import { Form, Field } from "../";
 import "./SignUpForm.scss";
 
 export interface ISignUpFormProps {
@@ -13,6 +13,9 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
   async function onSubmit() {
     auth.login(username, password);
@@ -22,23 +25,6 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
     <div className="SignUpForm">
       <Form
         title={title}
-        fields={{
-          username: {
-            type: "text",
-            state: username,
-            setState: setUsername,
-          },
-          password: {
-            type: "password",
-            state: password,
-            setState: setPassword,
-          },
-          confirmPassword: {
-            type: "password",
-            state: confirmPassword,
-            setState: setConfirmPassword,
-          },
-        }}
         footer={
           <div className="SignUpForm__footer">
             Already have an account? <Link to="/login">Log in</Link>
@@ -46,7 +32,29 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
         }
         submitText="Sign Up"
         onSubmit={onSubmit}
-      />
+      >
+        <Field
+          label="username"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          error={usernameError}
+        />
+        <Field
+          label="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          error={passwordError}
+        />
+        <Field
+          label="confirmPassword"
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          error={confirmPasswordError}
+        />
+      </Form>
     </div>
   );
 }
