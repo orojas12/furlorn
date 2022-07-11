@@ -15,9 +15,14 @@ export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [formError, setFormError] = useState("");
 
   async function onSubmit() {
-    auth.login(username, password);
+    const res = await auth.login(username, password);
+    if (!res.ok) {
+      setFormError(res.error);
+      return;
+    }
   }
 
   return (
@@ -31,6 +36,7 @@ export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
         }
         submitText="Log In"
         onSubmit={onSubmit}
+        error={formError}
       >
         <Field
           label="username"

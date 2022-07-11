@@ -16,9 +16,14 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [formError, setFormError] = useState("");
 
   async function onSubmit() {
-    auth.login(username, password);
+    const res = await auth.login(username, password);
+    if (!res.ok) {
+      setFormError(res.error);
+      return;
+    }
   }
 
   return (
@@ -32,6 +37,7 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
         }
         submitText="Sign Up"
         onSubmit={onSubmit}
+        error={formError}
       >
         <Field
           label="username"

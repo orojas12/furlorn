@@ -8,6 +8,7 @@ interface IFormProps {
   footer?: React.ReactNode;
   children?: React.ReactNode;
   onSubmit: Function;
+  error: string;
 }
 
 export default function Form({
@@ -16,6 +17,7 @@ export default function Form({
   onSubmit,
   children,
   footer,
+  error,
 }: IFormProps) {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -26,9 +28,11 @@ export default function Form({
     <form className="Form" onSubmit={handleSubmit}>
       {title ? <h1 className="Form__title">{title}</h1> : null}
       {children}
+
       <Button type="submit" btnStyle="primary">
         {submitText || "Submit"}
       </Button>
+      <div className="Form__error">{error}</div>
       {footer}
     </form>
   );
