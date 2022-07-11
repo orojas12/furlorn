@@ -44,6 +44,7 @@ export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           error={usernameError}
+          required
         />
         <Field
           label="password"
@@ -51,6 +52,7 @@ export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           error={passwordError}
+          required
         />
       </Form>
     </div>

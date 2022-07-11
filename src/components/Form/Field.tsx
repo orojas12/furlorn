@@ -7,6 +7,7 @@ export interface IFieldProps {
   type: "text" | "email" | "password" | "checkbox" | "date" | "file" | "number";
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string;
+  required?: boolean;
   error?: string;
 }
 
@@ -15,6 +16,7 @@ export default function Field({
   type,
   onChange,
   value,
+  required = false,
   error,
 }: IFieldProps) {
   return (
@@ -22,7 +24,16 @@ export default function Field({
       <div className="Field__label">
         {splitCamelCase(capitalizeFirstLetter(label)).join(" ")}
       </div>
-      <input type={type} name={label} onChange={onChange} value={value} />
+      <input
+        required={required}
+        type={type}
+        name={label}
+        onChange={onChange}
+        value={value}
+      />
+      <div className="Field__optional-text">
+        {!required ? "(optional)" : null}
+      </div>
       <div className="Field__error">{error || ""}</div>
     </label>
   );

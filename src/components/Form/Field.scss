@@ -11,7 +11,11 @@
   &__error {
     color: red;
     font-size: 0.8em;
-    height: 0.8em;
+    margin-top: 1rem;
+  }
+
+  &__optional-text {
+    font-size: 0.8em;
     margin-top: 1rem;
   }
 
