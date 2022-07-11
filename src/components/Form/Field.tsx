@@ -7,7 +7,7 @@ export interface IFieldProps {
   type: "text" | "email" | "password" | "checkbox" | "date" | "file" | "number";
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string;
-  error: string;
+  error?: string;
 }
 
 export default function Field({
@@ -23,7 +23,7 @@ export default function Field({
         {splitCamelCase(capitalizeFirstLetter(label)).join(" ")}
       </div>
       <input type={type} name={label} onChange={onChange} value={value} />
-      <div className="Field__error">{error}</div>
+      <div className="Field__error">{error || ""}</div>
     </label>
   );
 }
