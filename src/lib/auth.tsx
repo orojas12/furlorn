@@ -3,30 +3,29 @@ import useEffectOnUpdate from "./hooks/useEffectOnUpdate";
 
 const BASE_URL = "http://127.0.0.1:8000/api";
 
-interface IAuthContext {
-  user: string;
-  accessToken: string | null;
-  refreshToken: string | null;
-  login: Function;
-  signup: Function;
-  logout: Function;
-  refreshAccessToken: Function;
+type AuthContextType = ReturnType<typeof useAuthAPI>;
+
+interface ILoginResponse {
+  ok: boolean;
+  status: number | null;
+  error: string;
 }
 
-const AuthContext = createContext<IAuthContext>({} as IAuthContext);
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 function useAuthAPI() {
-  const userData = localStorage.getItem("user");
-
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user") ?? "{}") as string
-  );
-  const [accessToken, setAccessToken] = useState(
-    localStorage.getItem("accessToken")
-  );
-  const [refreshToken, setRefreshToken] = useState(
-    localStorage.getItem("refreshToken")
-  );
+  const [user, setUser] = useState(() => {
+    const item = localStorage.getItem("user");
+    return item ? JSON.parse(item) : null;
+  });
+  const [accessToken, setAccessToken] = useState(() => {
+    const item = localStorage.getItem("accessToken");
+    return item ? JSON.parse(item) : null;
+  });
+  const [refreshToken, setRefreshToken] = useState(() => {
+    const item = localStorage.getItem("refreshToken");
+    return item ? JSON.parse(item) : null;
+  });
 
   useEffectOnUpdate(() => {
     if (!user) {
@@ -49,9 +48,36 @@ function useAuthAPI() {
     localStorage.setItem("refreshToken", refreshToken as string);
   }, [refreshToken]);
 
-  async function login(username: string, password: string) {
+  async function getUser(accessToken: string) {
+    let res;
+
     try {
-      const res = await fetch(BASE_URL + "/token", {
+      res = await fetch(BASE_URL + "/profile", {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + accessToken,
+          Accept: "application/json",
+        },
+      });
+    } catch (err) {
+      console.error(err);
+      return null;
+    }
+
+    const user = await res.json();
+    return user;
+  }
+
+  async function login(
+    username: string,
+    password: string
+  ): Promise<ILoginResponse> {
+    let res;
+    let data;
+    let user;
+
+    try {
+      res = await fetch(BASE_URL + "/token", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -59,10 +85,23 @@ function useAuthAPI() {
         },
         body: JSON.stringify({ username, password }),
       });
-      console.log(res.json());
     } catch (err) {
       console.error(err);
+      return {
+        ok: false,
+        status: null,
+        error: "Something went wrong. Please try again later.",
+      };
     }
+
+    data = await res.json();
+    if (res.ok) {
+      setAccessToken(data.accessToken);
+      setRefreshToken(data.refreshToken);
+      user = await getUser(data.accessToken);
+      setUser(user);
+    }
+    return { ok: res.ok, status: res.status, error: data.detail || "" };
   }
 
   async function signup(
@@ -98,11 +137,7 @@ export function AuthProvider({
   children: React.ReactNode | React.ReactNode[];
 }) {
   const auth = useAuthAPI();
-  return (
-    <AuthContext.Provider value={auth as IAuthContext}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
