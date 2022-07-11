@@ -50,6 +50,12 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
           error={usernameError}
         />
         <Field
+          label="nickname"
+          type="text"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+        />
+        <Field
           label="password"
           type="password"
           value={password}
