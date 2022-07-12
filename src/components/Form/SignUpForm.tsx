@@ -22,15 +22,15 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
 
   function usernameIsValid() {
     /* 
-      Full string contains only lowercase and uppercase letters 
-      from A-Z, numbers 0-9, -, and _. 
+      Contains 4-32 alphanumeric characters ( a-z, A-Z, 0-9, _ )
+      and no consecutive underscores ( __ ).
     */
-    const regex = /^[a-zA-Z0-9-_]{2,32}$/;
+    const regex = /^([a-zA-Z0-9]|[_](?![_])){4,32}$/;
 
     const isValid = Boolean(username.match(regex));
     if (!isValid) {
       setUsernameError(
-        "Username must be 2-32 characters and may contain letters, numbers, dashes, and underscores."
+        "Username must be 4-32 alphanumeric characters (a-z, A-Z, 0-9, _) and may not contain consecutive underscores (__)."
       );
     }
     return isValid;
@@ -38,9 +38,8 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
 
   function passwordIsValid() {
     /* 
-      Full string is at least 8 characters long and contains at 
-      least 1 uppercase letter, 1 lowercase letter, and 1 number.
-      Can contain special characters.
+      Contains at least 8 characters  and at least 1 uppercase letter, 
+      1 lowercase letter, and 1 number. May contain special characters.
     */
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
