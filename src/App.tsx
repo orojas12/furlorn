@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./lib/auth";
+import { AuthProvider } from "./lib/auth/AuthProvider";
 
 import "./App.scss";
 

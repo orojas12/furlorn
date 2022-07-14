@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Form from "./Form";
 import "./LoginForm.scss";
-import { useAuth } from "../../lib/auth";
+import useAuth from "../../lib/auth/useAuth";
 import Field from "./Field";
 
 export interface ILoginFormProps {
