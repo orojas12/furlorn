@@ -18,10 +18,12 @@ import useEffectOnUpdate from "./useEffectOnUpdate";
  * @returns an array containing the current state and a setState function.
  */
 export function useLocalStorage(key: string) {
-  const [value, setValue] = useState(localStorage.getItem(key));
+  const [value, setValue] = useState(
+    JSON.parse(String(localStorage.getItem(key)))
+  );
 
   useEffectOnUpdate(() => {
-    localStorage.setItem(key, JSON.stringify(String(value)));
+    localStorage.setItem(key, JSON.stringify(value));
   }, [value]);
 
   return [value, setValue] as const;
