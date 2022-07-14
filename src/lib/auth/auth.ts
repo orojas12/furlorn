@@ -1,7 +1,5 @@
-import React, { useState, createContext, useContext } from "react";
-import useEffectOnUpdate from "./hooks/useEffectOnUpdate";
-
-const BASE_URL = "http://127.0.0.1:8000/api";
+import { createContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 type AuthContextType = ReturnType<typeof useAuthAPI>;
 
@@ -11,44 +9,18 @@ interface IAuthResponse {
   error: string;
 }
 
-const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+const BASE_URL = "http://127.0.0.1:8000/api";
 
-function useAuthAPI() {
-  const [user, setUser] = useState(() => {
-    const item = localStorage.getItem("user");
-    return item ? JSON.parse(item) : null;
-  });
-  const [accessToken, setAccessToken] = useState(() => {
-    const item = localStorage.getItem("accessToken");
-    return item;
-  });
-  const [refreshToken, setRefreshToken] = useState(() => {
-    const item = localStorage.getItem("refreshToken");
-    return item;
-  });
+export const AuthContext = createContext<AuthContextType>(
+  {} as AuthContextType
+);
 
-  useEffectOnUpdate(() => {
-    if (!user) {
-      localStorage.removeItem("user");
-    }
-    localStorage.setItem("user", JSON.stringify(user));
-  }, [user]);
+export function useAuthAPI() {
+  const [accessToken, setAccessToken] = useLocalStorage("accessToken");
+  const [refreshToken, setRefreshToken] = useLocalStorage("refreshToken");
+  const [user, setUser] = useLocalStorage("user");
 
-  useEffectOnUpdate(() => {
-    if (!accessToken) {
-      localStorage.removeItem("accessToken");
-    }
-    localStorage.setItem("accessToken", accessToken as string);
-  }, [accessToken]);
-
-  useEffectOnUpdate(() => {
-    if (!refreshToken) {
-      localStorage.removeItem("refreshToken");
-    }
-    localStorage.setItem("refreshToken", refreshToken as string);
-  }, [refreshToken]);
-
-  async function getUser(accessToken: string) {
+  async function fetchUser(accessToken: string) {
     let res;
 
     try {
@@ -74,8 +46,6 @@ function useAuthAPI() {
   ): Promise<IAuthResponse> {
     let res;
     let data;
-    let user;
-
     try {
       res = await fetch(BASE_URL + "/token", {
         method: "POST",
@@ -98,8 +68,6 @@ function useAuthAPI() {
     if (res.ok) {
       setAccessToken(data.access);
       setRefreshToken(data.refresh);
-      user = await getUser(data.access);
-      setUser(user);
     }
     return { ok: res.ok, status: res.status, error: data.detail || "" };
   }
@@ -148,17 +116,4 @@ function useAuthAPI() {
     logout,
     refreshAccessToken,
   };
-}
-
-export function AuthProvider({
-  children,
-}: {
-  children: React.ReactNode | React.ReactNode[];
-}) {
-  const auth = useAuthAPI();
-  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
-}
-
-export function useAuth() {
-  return useContext(AuthContext);
 }
