@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import logo from "../../assets/icons/furlorn_logo.svg";
-
+import Sidebar from "../Sidebar/Sidebar";
 import "./Navbar.scss";
 
 export interface INavbarProps {
-  type: string;
   children?: React.ReactNode;
 }
 
-export default function Navbar({ type, children = null }: INavbarProps) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Navbar({ children = null }: INavbarProps) {
+  const [showSidebar, setShowSidebar] = useState(false);
 
   function handleToggle() {
-    setIsOpen((prevState) => !prevState);
+    setShowSidebar((prevState) => !prevState);
   }
 
   return (
@@ -32,7 +30,12 @@ export default function Navbar({ type, children = null }: INavbarProps) {
           <div className="Nav__toggle-bar"></div>
         </button>
       </div>
-      {isOpen ? <div className="Nav__bottom">{children}</div> : null}
+      {showSidebar ? (
+        <div className="Nav__backdrop" onClick={handleToggle} />
+      ) : null}
+      <Sidebar show={showSidebar} side="right" onHide={handleToggle}>
+        {children}
+      </Sidebar>
     </nav>
   );
 }
