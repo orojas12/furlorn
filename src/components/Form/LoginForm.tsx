@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Form from "./Form";
 import "./LoginForm.scss";
 import useAuth from "../../lib/auth/useAuth";
@@ -11,6 +11,7 @@ export interface ILoginFormProps {
 
 export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
   const auth = useAuth();
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
@@ -23,6 +24,7 @@ export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
       setFormError(res.error);
       return;
     }
+    navigate("/app/createpost", { replace: true });
   }
 
   return (
