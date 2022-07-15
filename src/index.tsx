@@ -1,18 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { AuthProvider } from "./lib/auth/AuthProvider";
+
+const Home = React.lazy(() => import("./pages/Home/Home"));
+const SignUp = React.lazy(() => import("./pages/SignUp/SignUp"));
+const Login = React.lazy(() => import("./pages/Login/Login"));
+const CreatePost = React.lazy(() => import("./pages/CreatePost/CreatePost"));
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <AuthProvider>
+      <React.Suspense fallback={<h1>Loading...</h1>}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="app" element={<App />}>
+              <Route path="createpost" element={<CreatePost />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </React.Suspense>
+    </AuthProvider>
   </React.StrictMode>
 );
 
