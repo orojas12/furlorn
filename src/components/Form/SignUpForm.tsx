@@ -104,7 +104,7 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
         error={formError}
       >
         <Field
-          label="username"
+          name="username"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -112,13 +112,13 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
           required
         />
         <Field
-          label="nickname"
+          name="nickname"
           type="text"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
         />
         <Field
-          label="password"
+          name="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -126,7 +126,7 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
           required
         />
         <Field
-          label="confirmPassword"
+          name="confirmPassword"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}

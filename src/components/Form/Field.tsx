@@ -3,7 +3,7 @@ import { capitalizeFirstLetter, splitCamelCase } from "../../lib/utils";
 import "./Field.scss";
 
 export interface IFieldProps {
-  label: string;
+  name: string;
   type: "text" | "email" | "password" | "checkbox" | "date" | "file" | "number";
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string;
@@ -12,7 +12,7 @@ export interface IFieldProps {
 }
 
 export default function Field({
-  label,
+  name,
   type,
   onChange,
   value,
@@ -20,14 +20,14 @@ export default function Field({
   error,
 }: IFieldProps) {
   return (
-    <label htmlFor={label} className="Field">
+    <label htmlFor={name} className="Field">
       <div className="Field__label">
-        {splitCamelCase(capitalizeFirstLetter(label)).join(" ")}
+        {splitCamelCase(capitalizeFirstLetter(name)).join(" ")}
       </div>
       <input
         required={required}
         type={type}
-        name={label}
+        name={name}
         onChange={onChange}
         value={value}
       />

@@ -41,7 +41,7 @@ export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
         error={formError}
       >
         <Field
-          label="username"
+          name="username"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -49,7 +49,7 @@ export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
           required
         />
         <Field
-          label="password"
+          name="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
