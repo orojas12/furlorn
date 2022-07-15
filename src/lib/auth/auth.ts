@@ -37,6 +37,7 @@ export function useAuthAPI() {
     }
 
     const user = await res.json();
+    setUser(user);
     return user;
   }
 
@@ -68,6 +69,7 @@ export function useAuthAPI() {
     if (res.ok) {
       setAccessToken(data.access);
       setRefreshToken(data.refresh);
+      fetchUser(data.access);
     }
     return { ok: res.ok, status: res.status, error: data.detail || "" };
   }
