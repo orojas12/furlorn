@@ -1,7 +1,7 @@
 import React from "react";
-import "../Field.scss";
+import "./Field.scss";
 
-export interface IPasswordFieldProps {
+export interface ITextFieldProps {
   id: string;
   label: string;
   value: string;
@@ -10,20 +10,20 @@ export interface IPasswordFieldProps {
   error?: string;
 }
 
-export default function PasswordField({
+export default function TextField({
   id,
   label,
   value,
   onChange,
   required = false,
   error = "",
-}: IPasswordFieldProps) {
+}: ITextFieldProps) {
   return (
     <div className="Field">
       <label htmlFor={id}>{label}</label>
       <input
         required={required}
-        type="password"
+        type="text"
         id={id}
         onChange={onChange}
         value={value}

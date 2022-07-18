@@ -1,36 +1,29 @@
 import React from "react";
-import { capitalizeFirstLetter, splitCamelCase } from "../../../lib/utils";
-import "../Field.scss";
+import "./Field.scss";
 
-export interface INumberFieldProps {
+export interface ITextAreaFieldProps {
   id: string;
   label: string;
   value: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   required?: boolean;
   error?: string;
 }
 
-export default function NumberField({
+export default function TextAreaField({
   id,
   label,
   value,
   onChange,
   required = false,
   error = "",
-}: INumberFieldProps) {
+}: ITextAreaFieldProps) {
   return (
     <div className="Field">
       <label className="Field__label" htmlFor={id}>
         {label}
       </label>
-      <input
-        required={required}
-        type="number"
-        id={id}
-        onChange={onChange}
-        value={value}
-      />
+      <textarea id={id} onChange={onChange} value={value} required={required} />
       <div className="Field__optional-text">
         {!required ? "(optional)" : null}
       </div>
