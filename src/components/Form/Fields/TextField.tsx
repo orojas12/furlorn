@@ -1,5 +1,4 @@
 import React from "react";
-import { capitalizeFirstLetter, splitCamelCase } from "../../../lib/utils";
 import "../Field.scss";
 
 export interface ITextFieldProps {
@@ -11,21 +10,28 @@ export interface ITextFieldProps {
   error?: string;
 }
 
-export default function TextField(props: ITextFieldProps) {
+export default function TextField({
+  id,
+  label,
+  value,
+  onChange,
+  required = false,
+  error = "",
+}: ITextFieldProps) {
   return (
     <div className="Field">
-      <label htmlFor={props.id}>{props.label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
-        required={props.required}
+        required={required}
         type="text"
-        id={props.id}
-        onChange={props.onChange}
-        value={props.value}
+        id={id}
+        onChange={onChange}
+        value={value}
       />
       <div className="Field__optional-text">
-        {!props.required ? "(optional)" : null}
+        {!required ? "(optional)" : null}
       </div>
-      <div className="Field__error">{props.error || ""}</div>
+      <div className="Field__error">{error}</div>
     </div>
   );
 }
