@@ -3,38 +3,38 @@ import { capitalizeFirstLetter, splitCamelCase } from "../../../lib/utils";
 import "../Field.scss";
 
 export interface INumberFieldProps {
-  name: string;
+  id: string;
+  label: string;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   required?: boolean;
   error?: string;
 }
 
-function getLabelFromName(name: string) {
-  return splitCamelCase(capitalizeFirstLetter(name)).join(" ");
-}
-
-function getInputElementFromProps(props: INumberFieldProps) {
+export default function NumberField({
+  id,
+  label,
+  value,
+  onChange,
+  required = false,
+  error = "",
+}: INumberFieldProps) {
   return (
-    <input
-      required={props.required}
-      type="number"
-      name={props.name}
-      onChange={props.onChange}
-      value={props.value}
-    />
-  );
-}
-
-export default function NumberField(props: INumberFieldProps) {
-  return (
-    <label htmlFor={props.name} className="Field">
-      <div className="Field__label">{getLabelFromName(props.name)}</div>
-      {getInputElementFromProps(props)}
+    <div className="Field">
+      <label className="Field__label" htmlFor={id}>
+        {label}
+      </label>
+      <input
+        required={required}
+        type="number"
+        id={id}
+        onChange={onChange}
+        value={value}
+      />
       <div className="Field__optional-text">
-        {!props.required ? "(optional)" : null}
+        {!required ? "(optional)" : null}
       </div>
-      <div className="Field__error">{props.error || ""}</div>
-    </label>
+      <div className="Field__error">{error}</div>
+    </div>
   );
 }
