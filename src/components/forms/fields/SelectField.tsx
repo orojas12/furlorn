@@ -30,7 +30,11 @@ export default function SelectField({
       </label>
       <select id={id} value={value} onChange={onChange}>
         {options.map(({ label, value }) => {
-          return <option value={value}>{label}</option>;
+          return (
+            <option key={label} value={value}>
+              {label}
+            </option>
+          );
         })}
       </select>
       <div className="Field__optional-text">
