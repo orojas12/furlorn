@@ -9,6 +9,7 @@ import {
   SelectField,
   TextAreaField,
   PasswordField,
+  ImageFileField,
 } from "./forms/fields";
 import SignUpForm from "./forms/SignUpForm";
 import LoginForm from "./forms/LoginForm";
@@ -25,6 +26,7 @@ export {
   SelectField,
   TextAreaField,
   PasswordField,
+  ImageFileField,
   SignUpForm,
   LoginForm,
   Modal,
