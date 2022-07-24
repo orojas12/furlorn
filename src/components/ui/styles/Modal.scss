@@ -7,8 +7,10 @@
   padding: 1rem;
   width: 90%;
   max-width: 600px;
+  max-height: 50vh;
   z-index: 1;
   font-size: 1.6rem;
+  overflow-y: scroll;
 
   &__backdrop {
     position: fixed;
