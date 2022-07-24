@@ -1,32 +1,48 @@
 import React, { useState } from "react";
-import { Button } from "../../components";
-import IBreed from "./IBreed";
+import { IBreed, IFetchedBreeds } from "../../services/pet";
 
-export default function PureBreedSelector({
-  breeds,
-  selectedBreeds,
-  onChange,
-}: {
-  breeds: IBreed[];
+interface IPureBreedSelectorProps {
+  species: string;
+  fetchedBreeds: IFetchedBreeds;
   selectedBreeds: IBreed[];
   onChange: (breed: IBreed) => void;
-}) {
+}
+
+export default function PureBreedSelector({
+  species,
+  fetchedBreeds,
+  selectedBreeds,
+  onChange,
+}: IPureBreedSelectorProps) {
   const [searchText, setSearchText] = useState("");
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchText(e.target.value);
   }
 
-  function handleRadioChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const id = parseInt(e.target.id);
-    const value = e.target.value;
+  function handleRadioChange(
+    e: React.ChangeEvent<HTMLInputElement>,
+    breed: IBreed
+  ) {
     if (e.target.checked) {
-      onChange({ id, value });
+      onChange(breed);
     }
   }
 
-  function filterBreeds(breeds: IBreed[], filterText: string) {
-    return breeds.filter((breed) => breed.value.includes(filterText));
+  function filterBreeds(
+    breeds: IFetchedBreeds,
+    filterText: string,
+    species: string
+  ) {
+    if (species === "dog") {
+      return breeds.dogBreeds.filter((breed: IBreed) =>
+        breed.name.includes(filterText)
+      );
+    } else if (species === "cat") {
+      return breeds.catBreeds.filter((breed: IBreed) =>
+        breed.name.includes(filterText)
+      );
+    } else return [];
   }
 
   function getRadioInputsFromBreeds(breeds: IBreed[]) {
@@ -37,10 +53,9 @@ export default function PureBreedSelector({
             type="radio"
             id={breed.id.toString()}
             checked={selectedBreeds.some((obj) => obj.id === breed.id)}
-            value={breed.value}
-            onChange={handleRadioChange}
+            onChange={(e) => handleRadioChange(e, breed)}
           />
-          <label htmlFor={breed.id.toString()}>{breed.value}</label>
+          <label htmlFor={breed.id.toString()}>{breed.name}</label>
         </div>
       );
     });
@@ -56,7 +71,9 @@ export default function PureBreedSelector({
         onChange={handleSearchChange}
       />
       <fieldset className="CreatePostForm__breed-list">
-        {getRadioInputsFromBreeds(filterBreeds(breeds, searchText))}
+        {getRadioInputsFromBreeds(
+          filterBreeds(fetchedBreeds, searchText, species)
+        )}
       </fieldset>
     </div>
   );

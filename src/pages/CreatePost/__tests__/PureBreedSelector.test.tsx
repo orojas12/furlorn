@@ -7,11 +7,14 @@ describe("PureBreedSelector", () => {
   it("has all radio buttons", () => {
     render(
       <PureBreedSelector
-        breeds={[
-          { id: 1, value: "breed1" },
-          { id: 2, value: "breed2" },
-          { id: 3, value: "breed3" },
-        ]}
+        species="dog"
+        fetchedBreeds={{
+          dogBreeds: [
+            { id: 1, name: "breed1", animal: "dog" },
+            { id: 2, name: "breed2", animal: "dog" },
+          ],
+          catBreeds: [],
+        }}
         selectedBreeds={[]}
         onChange={() => {}}
       />
@@ -19,7 +22,6 @@ describe("PureBreedSelector", () => {
 
     expect(screen.getByLabelText("breed1")).toBeInTheDocument();
     expect(screen.getByLabelText("breed2")).toBeInTheDocument();
-    expect(screen.getByLabelText("breed3")).toBeInTheDocument();
   });
 
   it("calls onChange on click", async () => {
@@ -27,11 +29,14 @@ describe("PureBreedSelector", () => {
     const user = userEvent.setup();
     render(
       <PureBreedSelector
-        breeds={[
-          { id: 1, value: "breed1" },
-          { id: 2, value: "breed2" },
-          { id: 3, value: "breed3" },
-        ]}
+        species="dog"
+        fetchedBreeds={{
+          dogBreeds: [
+            { id: 1, name: "breed1", animal: "dog" },
+            { id: 2, name: "breed2", animal: "dog" },
+          ],
+          catBreeds: [],
+        }}
         selectedBreeds={[]}
         onChange={stub}
       />
