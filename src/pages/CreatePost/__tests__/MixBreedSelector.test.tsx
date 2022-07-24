@@ -7,11 +7,14 @@ describe("MixBreedSelector", () => {
   it("has all checkboxes", () => {
     render(
       <MixBreedSelector
-        breeds={[
-          { id: 1, value: "breed1" },
-          { id: 2, value: "breed2" },
-          { id: 3, value: "breed3" },
-        ]}
+        species="dog"
+        fetchedBreeds={{
+          dogBreeds: [
+            { id: 1, name: "breed1", animal: "dog" },
+            { id: 2, name: "breed2", animal: "dog" },
+          ],
+          catBreeds: [],
+        }}
         selectedBreeds={[]}
         onChange={jest.fn()}
         onClearAll={jest.fn()}
@@ -20,7 +23,6 @@ describe("MixBreedSelector", () => {
 
     expect(screen.getByLabelText("breed1")).toBeInTheDocument();
     expect(screen.getByLabelText("breed2")).toBeInTheDocument();
-    expect(screen.getByLabelText("breed3")).toBeInTheDocument();
   });
 
   it("calls handlers on click", async () => {
@@ -29,11 +31,14 @@ describe("MixBreedSelector", () => {
     const user = userEvent.setup();
     render(
       <MixBreedSelector
-        breeds={[
-          { id: 1, value: "breed1" },
-          { id: 2, value: "breed2" },
-          { id: 3, value: "breed3" },
-        ]}
+        species="dog"
+        fetchedBreeds={{
+          dogBreeds: [
+            { id: 1, name: "breed1", animal: "dog" },
+            { id: 2, name: "breed2", animal: "dog" },
+          ],
+          catBreeds: [],
+        }}
         selectedBreeds={[]}
         onChange={onChange}
         onClearAll={onClearAll}
@@ -43,14 +48,12 @@ describe("MixBreedSelector", () => {
     await Promise.all([
       user.click(screen.getByLabelText("breed1")),
       user.click(screen.getByLabelText("breed2")),
-      user.click(screen.getByLabelText("breed3")),
     ]);
-    expect(onChange).toBeCalledTimes(3);
+    expect(onChange).toBeCalledTimes(2);
     await Promise.all([
       user.click(screen.getByLabelText("breed1")),
       user.click(screen.getByLabelText("breed2")),
-      user.click(screen.getByLabelText("breed3")),
     ]);
-    expect(onChange).toBeCalledTimes(6);
+    expect(onChange).toBeCalledTimes(4);
   });
 });

@@ -1,16 +1,18 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "../../components";
-import IBreed from "./IBreed";
+import { IBreed, IFetchedBreeds } from "../../services/pet";
 
 interface IMixBreedSelectorProps {
-  breeds: IBreed[];
+  species: string;
+  fetchedBreeds: IFetchedBreeds;
   selectedBreeds: IBreed[];
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>, breed: IBreed) => void;
   onClearAll: () => void;
 }
 
 export default function MixBreedSelector({
-  breeds,
+  species,
+  fetchedBreeds,
   selectedBreeds,
   onChange,
   onClearAll,
@@ -28,18 +30,29 @@ export default function MixBreedSelector({
           <input
             type="checkbox"
             id={breed.id.toString()}
-            value={breed.value}
             checked={selectedBreeds.some((obj) => obj.id === breed.id)}
-            onChange={onChange}
+            onChange={(e) => onChange(e, breed)}
           />
-          <label htmlFor={breed.id.toString()}>{breed.value}</label>
+          <label htmlFor={breed.id.toString()}>{breed.name}</label>
         </div>
       );
     });
   }
 
-  function filterBreeds(breeds: IBreed[], filterText: string) {
-    return breeds.filter((breed) => breed.value.includes(filterText));
+  function filterBreeds(
+    breeds: IFetchedBreeds,
+    filterText: string,
+    species: string
+  ) {
+    if (species === "dog") {
+      return breeds.dogBreeds.filter((breed: IBreed) =>
+        breed.name.includes(filterText)
+      );
+    } else if (species === "cat") {
+      return breeds.catBreeds.filter((breed: IBreed) =>
+        breed.name.includes(filterText)
+      );
+    } else return [];
   }
 
   return (
@@ -52,7 +65,7 @@ export default function MixBreedSelector({
         onChange={handleSearchChange}
       />
       <fieldset className="CreatePostForm__breed-list">
-        {getCheckboxes(filterBreeds(breeds, searchText))}
+        {getCheckboxes(filterBreeds(fetchedBreeds, searchText, species))}
       </fieldset>
       <Button type="button" btnStyle="secondary" onClick={onClearAll}>
         Clear All
