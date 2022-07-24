@@ -6,6 +6,11 @@ export interface IBreed {
   animal: string;
 }
 
+export interface IFetchedBreeds {
+  dogBreeds: IBreed[];
+  catBreeds: IBreed[];
+}
+
 export async function _fetchBreeds() {
   let res;
   try {
@@ -33,7 +38,7 @@ export function _getCatBreedsFromArray(arrayOfBreeds: IBreed[]) {
   return arrayOfBreeds.filter((breed) => breed.animal === "cat");
 }
 
-export async function getBreeds() {
+export async function getBreeds(): Promise<IFetchedBreeds> {
   const breeds = await _fetchBreeds();
   const dogBreeds = _getDogBreedsFromArray(breeds);
   const catBreeds = _getCatBreedsFromArray(breeds);
