@@ -1,9 +1,9 @@
 const URL = "http://localhost:8000/api/pets";
 
-interface IBreed {
+export interface IBreed {
   id: number;
   name: string;
-  type: string;
+  animal: string;
 }
 
 export async function _fetchBreeds() {
@@ -26,18 +26,16 @@ export async function _fetchBreeds() {
 }
 
 export function _getDogBreedsFromArray(arrayOfBreeds: IBreed[]) {
-  return arrayOfBreeds.filter((breed) => breed.type === "dog");
+  return arrayOfBreeds.filter((breed) => breed.animal === "dog");
 }
 
 export function _getCatBreedsFromArray(arrayOfBreeds: IBreed[]) {
-  return arrayOfBreeds.filter((breed) => breed.type === "cat");
+  return arrayOfBreeds.filter((breed) => breed.animal === "cat");
 }
 
-export async function getBreeds(animal: string, src: any = null) {
-  const breeds = src ? src() : await _fetchBreeds();
-  if (animal === "dog") {
-    return _getDogBreedsFromArray(breeds);
-  } else if (animal === "cat") {
-    return _getCatBreedsFromArray(breeds);
-  } else return null;
+export async function getBreeds() {
+  const breeds = await _fetchBreeds();
+  const dogBreeds = _getDogBreedsFromArray(breeds);
+  const catBreeds = _getCatBreedsFromArray(breeds);
+  return { dogBreeds, catBreeds };
 }

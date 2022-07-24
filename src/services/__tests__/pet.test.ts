@@ -2,7 +2,6 @@ import {
   _fetchBreeds,
   _getDogBreedsFromArray,
   _getCatBreedsFromArray,
-  getBreeds,
 } from "../pet";
 
 describe("pet service", () => {
@@ -51,30 +50,6 @@ describe("pet service", () => {
   describe("_getCatBreeds", () => {
     it("returns array of cat breed objects", () => {
       const breeds = _getCatBreedsFromArray([
-        { id: 1, name: "breed1", type: "cat" },
-        { id: 2, name: "breed2", type: "dog" },
-        { id: 3, name: "breed3", type: "cat" },
-      ]);
-      expect(breeds).toHaveLength(2);
-      breeds.forEach((breed: any) => {
-        expect(breed.type).toEqual("cat");
-      });
-    });
-  });
-
-  describe("getBreeds", () => {
-    it("returns array of dog breeds", async () => {
-      const breeds: any = await getBreeds("dog", () => [
-        { id: 1, name: "breed1", type: "cat" },
-        { id: 2, name: "breed2", type: "dog" },
-        { id: 3, name: "breed3", type: "cat" },
-      ]);
-      expect(breeds).toHaveLength(1);
-      expect(breeds[0].type).toEqual("dog");
-    });
-
-    it("returns array of cat breeds", async () => {
-      const breeds: any = await getBreeds("cat", () => [
         { id: 1, name: "breed1", type: "cat" },
         { id: 2, name: "breed2", type: "dog" },
         { id: 3, name: "breed3", type: "cat" },
