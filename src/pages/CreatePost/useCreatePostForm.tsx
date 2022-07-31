@@ -21,8 +21,9 @@ export enum ActionType {
   ADD_EYE_COLOR = "addEyeColor",
   REMOVE_EYE_COLOR = "removeEyeColor",
   CLEAR_EYE_COLORS = "clearEyeColors",
-  REMOVE_IMAGE_FILE = "removeImageFile",
-  ADD_IMAGE_FILE = "addImageFile",
+  SET_UPLOADED_IMAGE = "setUploadedImage",
+  REMOVE_SAVED_IMAGE = "removeSavedImage",
+  ADD_SAVED_IMAGE = "addSavedImage",
 }
 
 export interface IFormAction {
@@ -41,7 +42,8 @@ export interface ICreatePostFormState {
   microchip: string;
   coatColors: string[];
   eyeColors: string[];
-  imageFiles: File[];
+  savedImages: Blob[];
+  uploadedImage: File | null;
   description: string;
 }
 
@@ -59,7 +61,7 @@ interface IErrorState {
   description: string;
 }
 
-function reducer(
+export function reducer(
   state: ICreatePostFormState,
   action: IFormAction
 ): ICreatePostFormState {
@@ -113,13 +115,16 @@ function reducer(
       };
     case ActionType.CLEAR_EYE_COLORS:
       return { ...state, eyeColors: [] };
-    case ActionType.ADD_IMAGE_FILE:
-      return { ...state, imageFiles: [...state.imageFiles, action.payload] };
-    case ActionType.REMOVE_IMAGE_FILE:
+    case ActionType.SET_UPLOADED_IMAGE:
+      return { ...state, uploadedImage: action.payload };
+    case ActionType.ADD_SAVED_IMAGE:
+      console.log(`Saved image with size of ${action.payload.size} bytes`);
+      return { ...state, savedImages: [...state.savedImages, action.payload] };
+    case ActionType.REMOVE_SAVED_IMAGE:
       return {
         ...state,
-        imageFiles: state.imageFiles.filter((file, index) => {
-          return index !== action.payload;
+        savedImages: state.savedImages.filter((blob) => {
+          return blob !== action.payload;
         }),
       };
     default:
@@ -170,7 +175,8 @@ const initialState = {
   microchip: "",
   coatColors: ["red", "green", "blue"],
   eyeColors: ["orange", "yellow", "purple"],
-  imageFiles: [],
+  savedImages: [],
+  uploadedImage: null,
   description: "",
 };
 
