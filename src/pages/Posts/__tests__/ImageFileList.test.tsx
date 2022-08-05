@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { screen, render } from "@testing-library/react";
-import ImageFileList from "../ImageFileList";
+import ImageFileList from "../forms/ImageFileList";
 
 describe("ImageFileList", () => {
   const mockCreateObjectURL = jest.fn();

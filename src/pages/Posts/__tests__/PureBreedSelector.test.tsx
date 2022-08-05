@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import PureBreedSelector from "../PureBreedSelector";
+import PureBreedSelector from "../forms/fields/PureBreedSelector";
 
 describe("PureBreedSelector", () => {
   it("has all radio buttons", () => {
@@ -9,11 +9,11 @@ describe("PureBreedSelector", () => {
       <PureBreedSelector
         species="dog"
         fetchedBreeds={{
-          dogBreeds: [
-            { id: 1, name: "breed1", animal: "dog" },
-            { id: 2, name: "breed2", animal: "dog" },
+          dogs: [
+            { id: 1, name: "breed1", species: "dog" },
+            { id: 2, name: "breed2", species: "dog" },
           ],
-          catBreeds: [],
+          cats: [],
         }}
         selectedBreeds={[]}
         onChange={() => {}}
@@ -31,11 +31,11 @@ describe("PureBreedSelector", () => {
       <PureBreedSelector
         species="dog"
         fetchedBreeds={{
-          dogBreeds: [
-            { id: 1, name: "breed1", animal: "dog" },
-            { id: 2, name: "breed2", animal: "dog" },
+          dogs: [
+            { id: 1, name: "breed1", species: "dog" },
+            { id: 2, name: "breed2", species: "dog" },
           ],
-          catBreeds: [],
+          cats: [],
         }}
         selectedBreeds={[]}
         onChange={stub}

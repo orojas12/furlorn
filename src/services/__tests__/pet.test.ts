@@ -36,13 +36,13 @@ describe("pet service", () => {
   describe("_getDogBreeds", () => {
     it("returns array of dog breed objects", () => {
       const breeds = _getDogBreedsFromArray([
-        { id: 1, name: "breed1", animal: "cat" },
-        { id: 2, name: "breed2", animal: "dog" },
-        { id: 3, name: "breed3", animal: "dog" },
+        { id: 1, name: "breed1", species: "cat" },
+        { id: 2, name: "breed2", species: "dog" },
+        { id: 3, name: "breed3", species: "dog" },
       ]);
       expect(breeds).toHaveLength(2);
       breeds.forEach((breed) => {
-        expect(breed.animal).toEqual("dog");
+        expect(breed.species).toEqual("dog");
       });
     });
   });
@@ -50,13 +50,13 @@ describe("pet service", () => {
   describe("_getCatBreeds", () => {
     it("returns array of cat breed objects", () => {
       const breeds = _getCatBreedsFromArray([
-        { id: 1, name: "breed1", animal: "cat" },
-        { id: 2, name: "breed2", animal: "dog" },
-        { id: 3, name: "breed3", animal: "cat" },
+        { id: 1, name: "breed1", species: "cat" },
+        { id: 2, name: "breed2", species: "dog" },
+        { id: 3, name: "breed3", species: "cat" },
       ]);
       expect(breeds).toHaveLength(2);
       breeds.forEach((breed: any) => {
-        expect(breed.animal).toEqual("cat");
+        expect(breed.species).toEqual("cat");
       });
     });
   });

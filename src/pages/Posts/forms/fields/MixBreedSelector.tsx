@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button } from "../../components";
-import { IBreed, IFetchedBreeds } from "../../services/pet";
+import { Button } from "../../../../components";
+import { IBreed, IFetchedBreeds } from "../../../../services/pet";
 
 interface IMixBreedSelectorProps {
   species: string;
@@ -45,11 +45,11 @@ export default function MixBreedSelector({
     species: string
   ) {
     if (species === "dog") {
-      return breeds.dogBreeds.filter((breed: IBreed) =>
+      return breeds.dogs.filter((breed: IBreed) =>
         breed.name.includes(filterText)
       );
     } else if (species === "cat") {
-      return breeds.catBreeds.filter((breed: IBreed) =>
+      return breeds.cats.filter((breed: IBreed) =>
         breed.name.includes(filterText)
       );
     } else return [];

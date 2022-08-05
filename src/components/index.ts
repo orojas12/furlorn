@@ -14,7 +14,7 @@ import {
 import SignUpForm from "./forms/SignUpForm";
 import LoginForm from "./forms/LoginForm";
 import Modal from "./ui/Modal";
-import ImageFilePreview from "./ui/ImageFilePreview";
+import ImageFilePreview from "../pages/Posts/forms/ImageFilePreview";
 
 export {
   Navbar,

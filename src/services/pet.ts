@@ -3,12 +3,18 @@ const URL = "http://localhost:8000/api/pets";
 export interface IBreed {
   id: number;
   name: string;
-  animal: string;
+  species: string;
 }
 
 export interface IFetchedBreeds {
-  dogBreeds: IBreed[];
-  catBreeds: IBreed[];
+  dogs: IBreed[];
+  cats: IBreed[];
+}
+
+export interface IColor {
+  id: string;
+  name: string;
+  hex: string;
 }
 
 export async function _fetchBreeds() {
@@ -31,16 +37,16 @@ export async function _fetchBreeds() {
 }
 
 export function _getDogBreedsFromArray(arrayOfBreeds: IBreed[]) {
-  return arrayOfBreeds.filter((breed) => breed.animal === "dog");
+  return arrayOfBreeds.filter((breed) => breed.species === "dog");
 }
 
 export function _getCatBreedsFromArray(arrayOfBreeds: IBreed[]) {
-  return arrayOfBreeds.filter((breed) => breed.animal === "cat");
+  return arrayOfBreeds.filter((breed) => breed.species === "cat");
 }
 
 export async function getBreeds(): Promise<IFetchedBreeds> {
   const breeds = await _fetchBreeds();
-  const dogBreeds = _getDogBreedsFromArray(breeds);
-  const catBreeds = _getCatBreedsFromArray(breeds);
-  return { dogBreeds, catBreeds };
+  const dogs = _getDogBreedsFromArray(breeds);
+  const cats = _getCatBreedsFromArray(breeds);
+  return { dogs, cats };
 }

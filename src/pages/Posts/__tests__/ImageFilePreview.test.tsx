@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ImageFilePreview from "../ImageFilePreview";
-import * as ImageFilePreviewModule from "../ImageFilePreview";
+import ImageFilePreview from "../forms/ImageFilePreview";
+import * as ImageFilePreviewModule from "../../../pages/Posts/forms/ImageFilePreview";
 
 describe("ImageFilePreview", () => {
   describe("getHTMLImageElement", () => {

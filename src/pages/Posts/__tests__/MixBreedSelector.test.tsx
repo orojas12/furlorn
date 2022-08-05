@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import MixBreedSelector from "../MixBreedSelector";
+import MixBreedSelector from "../forms/fields/MixBreedSelector";
 
 describe("MixBreedSelector", () => {
   it("has all checkboxes", () => {
@@ -9,11 +9,11 @@ describe("MixBreedSelector", () => {
       <MixBreedSelector
         species="dog"
         fetchedBreeds={{
-          dogBreeds: [
-            { id: 1, name: "breed1", animal: "dog" },
-            { id: 2, name: "breed2", animal: "dog" },
+          dogs: [
+            { id: 1, name: "breed1", species: "dog" },
+            { id: 2, name: "breed2", species: "dog" },
           ],
-          catBreeds: [],
+          cats: [],
         }}
         selectedBreeds={[]}
         onChange={jest.fn()}
@@ -33,11 +33,11 @@ describe("MixBreedSelector", () => {
       <MixBreedSelector
         species="dog"
         fetchedBreeds={{
-          dogBreeds: [
-            { id: 1, name: "breed1", animal: "dog" },
-            { id: 2, name: "breed2", animal: "dog" },
+          dogs: [
+            { id: 1, name: "breed1", species: "dog" },
+            { id: 2, name: "breed2", species: "dog" },
           ],
-          catBreeds: [],
+          cats: [],
         }}
         selectedBreeds={[]}
         onChange={onChange}

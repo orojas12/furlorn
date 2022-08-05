@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import "./styles/ImageFilePreview.scss";
+import "./ImageFilePreview.scss";
 
 export function getHTMLImageElementFromFile(file: File) {
   const url = URL.createObjectURL(file);
@@ -128,50 +128,55 @@ export default function ImageFilePreview(props: IImageFilePreviewProps) {
         id="MyCanvas"
         width={props.maxWidth}
         height={props.maxHeight}
-        style={{ backgroundColor: "white" }}
+        style={{ backgroundColor: "lightgray" }}
       >
         Image Preview
       </canvas>
-      <button
-        onClick={() => {
-          const ctx = ctxRef.current;
-          if (ctx && image) {
-            rotateCanvas(ctx, 90);
-            drawCenteredImage(ctx, image);
-          }
-        }}
-      >
-        Rotate Right
-      </button>
-      <button
-        onClick={() => {
-          const ctx = ctxRef.current;
-          if (ctx && image) {
-            rotateCanvas(ctx, -90);
-            drawCenteredImage(ctx, image);
-          }
-        }}
-      >
-        Rotate Left
-      </button>
-      <button
-        onClick={() => {
-          const canvas = canvasRef.current;
-          const ctx = ctxRef.current;
-          if (canvas && ctx && image) {
-            try {
-              canvas.toBlob((blob) => {
-                if (!blob) throw new Error("Failed to load blob.");
-                props.onSave(blob);
-              }, "image/jpeg");
-            } catch (err) {
-              console.error(err);
+      <div className="ImageFilePreview__controls">
+        <button
+          type="button"
+          onClick={() => {
+            const ctx = ctxRef.current;
+            if (ctx && image) {
+              rotateCanvas(ctx, -90);
+              drawCenteredImage(ctx, image);
             }
-          }
-        }}
-      >
-        Save
-      </button>
+          }}
+        >
+          Rotate Left
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            const canvas = canvasRef.current;
+            const ctx = ctxRef.current;
+            if (canvas && ctx && image) {
+              canvas.toBlob((blob) => {
+                if (!blob) return console.error("Failed to create blob.");
+                const file = new File([blob], "photo.jpg", {
+                  type: "image/jpeg",
+                });
+                props.onSave(file);
+              }, "image/jpeg");
+            }
+          }}
+        >
+          Save
+        </button>
+        <button
+          className="ImageFilePreview__rotate"
+          type="button"
+          onClick={() => {
+            const ctx = ctxRef.current;
+            if (ctx && image) {
+              rotateCanvas(ctx, 90);
+              drawCenteredImage(ctx, image);
+            }
+          }}
+        >
+          Rotate Right
+        </button>
+      </div>
     </div>
   );
 }

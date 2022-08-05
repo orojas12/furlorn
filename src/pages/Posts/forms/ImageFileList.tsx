@@ -2,7 +2,7 @@ import * as React from "react";
 
 export interface IImageFileListProps {
   blobs: Blob[];
-  onDelete: React.MouseEventHandler<HTMLButtonElement>;
+  onDelete: (blob: Blob) => void;
 }
 
 export default function ImageFileList({
@@ -19,8 +19,9 @@ export default function ImageFileList({
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <button
+                type="button"
                 data-file-list-index={index.toString()}
-                onClick={onDelete}
+                onClick={() => onDelete(blob)}
               >
                 Remove
               </button>

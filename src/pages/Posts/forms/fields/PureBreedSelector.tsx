@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IBreed, IFetchedBreeds } from "../../services/pet";
+import { IBreed, IFetchedBreeds } from "../../../../services/pet";
 
 interface IPureBreedSelectorProps {
   species: string;
@@ -35,11 +35,11 @@ export default function PureBreedSelector({
     species: string
   ) {
     if (species === "dog") {
-      return breeds.dogBreeds.filter((breed: IBreed) =>
+      return breeds.dogs.filter((breed: IBreed) =>
         breed.name.includes(filterText)
       );
     } else if (species === "cat") {
-      return breeds.catBreeds.filter((breed: IBreed) =>
+      return breeds.cats.filter((breed: IBreed) =>
         breed.name.includes(filterText)
       );
     } else return [];

@@ -11,18 +11,6 @@ describe("ImageFileField", () => {
     expect(element.getAttribute("type")).toEqual("file");
   });
 
-  it("shows optional text if 'required' prop is false", () => {
-    render(<ImageFileField id="photoUpload" label="Upload Photo" />);
-    const optionalText = screen.getByText(/optional/i);
-    expect(optionalText).toBeInTheDocument();
-  });
-
-  it("does not show optional text if 'required' prop is true", () => {
-    render(<ImageFileField id="photoUpload" label="Upload Photo" required />);
-    const optionalText = screen.queryByText(/optional/i);
-    expect(optionalText).not.toBeInTheDocument();
-  });
-
   it("displays error message", () => {
     render(
       <ImageFileField
@@ -39,12 +27,6 @@ describe("ImageFileField", () => {
     render(<ImageFileField id="photoUpload" label="Upload Photo" />);
     const element = screen.getByLabelText("Upload Photo");
     expect(element.getAttribute("accept")).toEqual("image/jpeg,image/png");
-  });
-
-  it("allows multiple file upload", () => {
-    render(<ImageFileField id="photoUpload" label="Upload Photo" />);
-    const element = screen.getByLabelText("Upload Photo");
-    expect(element.hasAttribute("multiple")).toEqual(true);
   });
 
   it("calls onChange after change event", async () => {
