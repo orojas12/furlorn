@@ -29,9 +29,11 @@ export default function Form({
       {title ? <h1 className="Form__title">{title}</h1> : null}
       {children}
 
-      <Button type="submit" btnStyle="primary">
-        {submitText || "Submit"}
-      </Button>
+      {submitText ? (
+        <Button type="submit" btnStyle="primary">
+          {submitText}
+        </Button>
+      ) : null}
       <div className="Form__error">{error}</div>
       {footer}
     </form>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../lib/auth/useAuth";
-import { Form, Field } from "../";
+import { Form, TextField, PasswordField } from "..";
 import "./SignUpForm.scss";
 
 export interface ISignUpFormProps {
@@ -103,31 +103,31 @@ export default function SignUpForm({ title = "Sign Up" }: ISignUpFormProps) {
         onSubmit={onSubmit}
         error={formError}
       >
-        <Field
-          label="username"
-          type="text"
+        <TextField
+          id="username"
+          label="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           error={usernameError}
           required
         />
-        <Field
-          label="nickname"
-          type="text"
+        <TextField
+          id="nickname"
+          label="Nickname"
           value={nickname}
           onChange={(e) => setNickname(e.target.value)}
         />
-        <Field
-          label="password"
-          type="password"
+        <PasswordField
+          id="password"
+          label="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           error={passwordError}
           required
         />
-        <Field
-          label="confirmPassword"
-          type="password"
+        <PasswordField
+          id="confirmPassword"
+          label="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           error={confirmPasswordError}

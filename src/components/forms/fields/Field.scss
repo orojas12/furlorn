@@ -1,0 +1,60 @@
+@use "../../../styles/variables.scss" as var;
+@use "sass:color";
+
+.Field {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+
+  &__error {
+    color: red;
+    font-size: 0.8em;
+    margin-top: 1rem;
+  }
+
+  &__optional-text {
+    font-size: 0.8em;
+    margin-top: 1rem;
+  }
+
+  input {
+    margin-top: 1rem;
+    // outline: none;
+    border: solid 1px color.adjust(var.$dark, $alpha: -0.5);
+    font-size: inherit;
+
+    &[type="text"],
+    &[type="email"],
+    &[type="password"],
+    &[type="number"] {
+      width: 100%;
+      padding: 0.8rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    &:focus {
+      // border-color: var.$primary;
+    }
+  }
+
+  select {
+    margin-top: 1rem;
+    // outline: none;
+    border: solid 1px color.adjust(var.$dark, $alpha: -0.5);
+    font-size: inherit;
+    width: 100%;
+    padding: 0.8rem 0;
+    border-radius: 4px;
+    background-color: white;
+
+    &:focus {
+      // border-color: var.$primary;
+    }
+  }
+
+  textarea {
+    font-family: inherit;
+    font-size: inherit;
+    height: 20rem;
+  }
+}

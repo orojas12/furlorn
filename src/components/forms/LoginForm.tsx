@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Form from "./Form";
+import { Form, TextField, PasswordField } from "..";
 import "./LoginForm.scss";
 import useAuth from "../../lib/auth/useAuth";
-import Field from "./Field";
 
 export interface ILoginFormProps {
   title?: string;
@@ -14,8 +13,6 @@ export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [usernameError, setUsernameError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const [formError, setFormError] = useState("");
 
   async function onSubmit() {
@@ -40,20 +37,18 @@ export default function LoginForm({ title = "Log In" }: ILoginFormProps) {
         onSubmit={onSubmit}
         error={formError}
       >
-        <Field
-          label="username"
-          type="text"
+        <TextField
+          id="username"
+          label="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          error={usernameError}
           required
         />
-        <Field
-          label="password"
-          type="password"
+        <PasswordField
+          id="password"
+          label="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          error={passwordError}
           required
         />
       </Form>
