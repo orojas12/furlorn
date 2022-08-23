@@ -16,20 +16,24 @@
   text-transform: uppercase;
 }
 
-.letter-spacing-tight {
+.spacing-tighter {
+  letter-spacing: -0.05em;
+}
+
+.spacing-tight {
   letter-spacing: -0.025em;
 }
 
-.letter-spacing-normal {
+.spacing-normal {
   letter-spacing: 0em;
 }
 
-.letter-spacing-wide {
+.spacing-wide {
   letter-spacing: 0.025em;
 }
 
-.text-5xl {
-  font-size: var.$fs-9;
+.spacing-wider {
+  letter-spacing: 0.05em;
 }
 
 .text-4xl {
@@ -64,9 +68,9 @@
   font-size: var.$fs-1;
 }
 
-.text-5xl,
 .text-4xl,
-.text-3xl {
+.text-3xl,
+.text-2xl {
   line-height: 1.1;
 }
 
