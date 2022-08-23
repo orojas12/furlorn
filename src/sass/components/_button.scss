@@ -1,0 +1,51 @@
+@use "../abstracts/variables" as var;
+
+.btn {
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 1em 2em;
+  border: solid 2px transparent;
+  border-radius: 50px;
+  font-size: var.$fs-2;
+  letter-spacing: var.$spacing-wide;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--primary {
+    @extend .btn;
+    background: linear-gradient(
+      to right,
+      hsl(var.$clr-primary),
+      hsl(var.$clr-primary-alt)
+    );
+    background-origin: border-box;
+    color: hsl(var.$clr-light);
+
+    &-outline {
+      @extend .btn;
+      border: solid 2px hsl(var.$clr-primary);
+      background-color: hsl(var.$clr-light);
+      color: hsl(var.$clr-primary);
+    }
+  }
+
+  &--secondary {
+    @extend .btn;
+    background: linear-gradient(
+      to right,
+      hsl(var.$clr-secondary),
+      hsl(var.$clr-secondary-alt)
+    );
+    background-origin: border-box;
+    color: hsl(var.$clr-light);
+
+    &-outline {
+      @extend .btn;
+      border: solid 2px hsl(var.$clr-secondary);
+      background-color: hsl(var.$clr-light);
+      color: hsl(var.$clr-secondary);
+    }
+  }
+}
