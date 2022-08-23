@@ -10,20 +10,27 @@ $clr-success: 109 90% 37%;
 $clr-light: 0 0% 97%;
 $clr-dark: 211 24% 13%;
 
-/* Font Sizes - 1.25 scale */
-$fs-9: 3.815rem;
-$fs-8: 3.052rem;
-$fs-7: 2.441rem;
-$fs-6: 1.953rem;
-$fs-5: 1.563rem;
-$fs-4: 1.25rem;
-$fs-3: 1rem;
-$fs-2: 0.8rem;
-$fs-1: 0.64rem;
+/* Font Sizes - 1.414 scale at fs-3 and above*/
+$fs-8: 9.044rem;
+$fs-7: 6.396rem;
+$fs-6: 4.523rem;
+$fs-5: 3.199rem;
+$fs-4: 2.262rem;
+$fs-3: 1.6rem;
+$fs-2: 1.4rem;
+$fs-1: 1.2rem;
 
 /* Font Families */
 $ff-sans: "Oxygen", sans-serif;
 $ff-cursive: "Baloo 2", cursive;
+
+/* Letter Spacing */
+$spacing-tighter: -0.05em;
+$spacing-tight: -0.025em;
+$spacing-normal: 0em;
+$spacing-wide: 0.025em;
+$spacing-wider: 0.05em;
+$spacing-widest: 0.1em;
 
 /* Breakpoints */
 $bp-sm: 33.75em; // 540px at 16px default font
