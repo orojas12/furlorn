@@ -5,6 +5,30 @@
   gap: 1rem;
 }
 
+.row-wrap {
+  flex-flow: row wrap;
+}
+
+.row-nowrap {
+  flex-flow: row nowrap;
+}
+
+.column-wrap {
+  flex-flow: column wrap;
+}
+
+.column-nowrap {
+  flex-flow: column nowrap;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
 .grid {
   display: grid;
   gap: 1rem;
