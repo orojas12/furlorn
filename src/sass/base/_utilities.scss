@@ -1,0 +1,89 @@
+@use "../abstracts/variables" as var;
+
+.flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.flow > *:not(:first-child) {
+  margin-top: 1.6rem;
+}
+
+.container {
+  padding-inline: 32px;
+  margin-inline: auto;
+  width: 100%;
+  max-width: var.$bp-xl;
+
+  &--fluid {
+    max-width: 100%;
+  }
+}
+
+/* Visually hide element but allow it to be read by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Background Color */
+
+.bg-primary {
+  background-color: hsl(var.$clr-primary);
+}
+
+.bg-primary-linear {
+  background: linear-gradient(
+    to right,
+    hsl(var.$clr-primary),
+    hsl(var.$clr-primary-alt)
+  );
+}
+
+.bg-secondary {
+  background-color: hsl(var.$clr-secondary);
+}
+
+.bg-secondary-linear {
+  background: linear-gradient(
+    to right,
+    hsl(var.$clr-secondary),
+    hsl(var.$clr-secondary-alt)
+  );
+}
+
+.bg-tertiary {
+  background-color: hsl(var.$clr-tertiary);
+}
+
+.bg-accent {
+  background-color: hsl(var.$clr-accent);
+}
+
+.bg-light {
+  background-color: hsl(var.$clr-light);
+}
+
+.bg-dark {
+  background-color: black;
+}
+
+.bg-success {
+  background-color: hsl(var.$clr-success);
+}
+
+.bg-warning {
+  background-color: hsl(var.$clr-success);
+}

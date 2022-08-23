@@ -1,0 +1,33 @@
+/* Colors - hsl */
+$clr-primary: 211 100% 35%;
+$clr-primary-alt: 195 91% 41%;
+$clr-secondary: 22 100% 55%;
+$clr-secondary-alt: 38 100% 50%;
+$clr-tertiary: 38 100% 85%;
+$clr-accent: 51 100% 55%;
+$clr-warning: 7 100% 50%;
+$clr-success: 109 90% 37%;
+$clr-light: 0 0% 97%;
+$clr-dark: 211 24% 13%;
+
+/* Font Sizes - 1.25 scale */
+$fs-9: 3.815rem;
+$fs-8: 3.052rem;
+$fs-7: 2.441rem;
+$fs-6: 1.953rem;
+$fs-5: 1.563rem;
+$fs-4: 1.25rem;
+$fs-3: 1rem;
+$fs-2: 0.8rem;
+$fs-1: 0.64rem;
+
+/* Font Families */
+$ff-sans: "Oxygen", sans-serif;
+$ff-cursive: "Baloo 2", cursive;
+
+/* Breakpoints */
+$bp-sm: 33.75em; // 540px at 16px default font
+$bp-md: 45em; // 720px at 16px default font
+$bp-lg: 60em; // 960px at 16px default font
+$bp-xl: 71.25em; // 1140px at 16px default font
+$bp-xxl: 82.5; // 1320px at 16px default font
