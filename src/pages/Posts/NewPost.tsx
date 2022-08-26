@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Form } from "../../components";
+import { Form } from "../../components";
 import { IFetchedBreeds } from "../../services/pet";
 import { getBreeds } from "../../services/pet";
 import usePostForm from "./forms/usePostForm";
@@ -55,36 +55,32 @@ export default function NewPost(props: INewPostProps) {
       </Routes>
       <div className="NewPost__section-nav">
         {currentSection !== 0 ? (
-          <Button
+          <button
             className="NewPost__section-nav-back"
             type="button"
-            btnStyle="primary"
             onClick={() => {
               navigate(sectionPaths[currentSection - 1], { replace: true });
               setCurrentSection((prevSection) => prevSection - 1);
             }}
           >
             {"< Prev"}
-          </Button>
+          </button>
         ) : null}
         {currentSection < sectionPaths.length - 1 ? (
-          <Button
+          <button
             className="NewPost__section-nav-next"
             type="button"
-            btnStyle="primary"
             onClick={() => {
               navigate(sectionPaths[currentSection + 1], { replace: true });
               setCurrentSection((prevSection) => prevSection + 1);
             }}
           >
             {"Next >"}
-          </Button>
+          </button>
         ) : null}
       </div>
       {currentSection === sectionPaths.length - 1 ? (
-        <Button type="submit" btnStyle="primary">
-          Create Post
-        </Button>
+        <button type="submit">Create Post</button>
       ) : null}
     </Form>
   );

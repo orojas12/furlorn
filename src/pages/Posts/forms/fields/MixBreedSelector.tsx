@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button } from "../../../../components";
 import { IBreed, IFetchedBreeds } from "../../../../services/pet";
 
 interface IMixBreedSelectorProps {
@@ -67,9 +66,9 @@ export default function MixBreedSelector({
       <fieldset className="CreatePostForm__breed-list">
         {getCheckboxes(filterBreeds(fetchedBreeds, searchText, species))}
       </fieldset>
-      <Button type="button" btnStyle="secondary" onClick={onClearAll}>
+      <button type="button" onClick={onClearAll}>
         Clear All
-      </Button>
+      </button>
     </div>
   );
 }

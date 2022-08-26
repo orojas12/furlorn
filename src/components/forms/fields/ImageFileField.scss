@@ -1,9 +1,7 @@
-@use "../../../styles/variables.scss" as var;
-
 .ImageFileField {
   label {
     padding: 2rem;
-    background-color: var.$primary;
+    background-color: blue;
     color: white;
     border-radius: 6px;
     text-align: center;

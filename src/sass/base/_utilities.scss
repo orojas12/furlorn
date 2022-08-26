@@ -2,23 +2,23 @@
 
 .flex {
   display: flex;
-  gap: 1rem;
+  gap: 0.6rem;
 }
 
-.row-wrap {
-  flex-flow: row wrap;
+.flex-row {
+  flex-direction: row;
 }
 
-.row-nowrap {
-  flex-flow: row nowrap;
+.flex-column {
+  flex-direction: column;
 }
 
-.column-wrap {
-  flex-flow: column wrap;
+.wrap {
+  flex-wrap: wrap;
 }
 
-.column-nowrap {
-  flex-flow: column nowrap;
+.nowrap {
+  flex-wrap: nowrap;
 }
 
 .justify-center {
@@ -27,6 +27,10 @@
 
 .align-center {
   align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
 }
 
 .grid {

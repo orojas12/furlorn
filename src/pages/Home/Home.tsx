@@ -1,4 +1,4 @@
-import { Header, Button, Card, SignUpForm } from "../../components";
+import { Header, Card, SignUpForm } from "../../components";
 
 import heroImg from "../../assets/images/hero-img.png";
 import neighborhoodIcon from "../../assets/icons/neighborhood-icon.svg";
@@ -25,29 +25,15 @@ export default function Home() {
                 Use the power of your local community to recover your beloved
                 friend
               </h2>
-              <Button type="button" btnStyle="primary" onClick={() => {}}>
+              <button type="button" onClick={() => {}}>
                 Get Started
-              </Button>
+              </button>
             </div>
           </div>
         </section>
         <section id="about">
           <div className="about-container">
-            <Card
-              image={neighborhoodIcon}
-              caption="Neighborhood reporting notifies you when your pet is spotted or found in
-        your local area."
-            />
-            <Card
-              image={searchIcon}
-              imageStyles={{ height: "60px" }}
-              caption="Use an advanced search tool to quickly find results that match your pet’s description."
-            />
-            <Card
-              image={mapIcon}
-              imageStyles={{ height: "80px" }}
-              caption="View lost and found pets in your neighborhood on an interactive map."
-            />
+            <Card />
           </div>
         </section>
         <section id="signup">

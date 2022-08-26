@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Button } from "../../../../components";
 import { IColor } from "../../../../services/pet";
 
 export interface IColorSelectorProps {
@@ -42,9 +41,9 @@ export default function ColorSelector({
           );
         })}
       </div>
-      <Button type="button" btnStyle="secondary" onClick={(e) => onClear()}>
+      <button type="button" onClick={(e) => onClear()}>
         Clear All
-      </Button>
+      </button>
     </div>
   );
 }

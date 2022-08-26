@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import MixBreedSelector from "./MixBreedSelector";
 import PureBreedSelector from "./PureBreedSelector";
-import { SelectField, Button, Modal } from "../../../../components";
+import { SelectField, Modal } from "../../../../components";
 import { IBreed } from "../../../../services/pet";
 import { IFormAction, IPostFormState } from "../PostFormReducer";
 import { ActionType } from "../ActionType";
@@ -75,14 +75,13 @@ export default function BreedSelector({
         <div className="CreatePostForm__selected-breeds">
           {getSelectedBreedsLabel()}
         </div>
-        <Button
+        <button
           type="button"
-          btnStyle="secondary"
           onClick={handleSelectBreedModalToggle}
           disabled={state.breedType === "unknown"}
         >
           Select Breed...
-        </Button>
+        </button>
         <Modal
           show={showSelectBreedModal}
           onClose={handleSelectBreedModalToggle}
@@ -109,13 +108,9 @@ export default function BreedSelector({
             />
           )}
 
-          <Button
-            type="button"
-            btnStyle="primary"
-            onClick={handleSelectBreedModalToggle}
-          >
+          <button type="button" onClick={handleSelectBreedModalToggle}>
             Close
-          </Button>
+          </button>
         </Modal>
       </div>
     </fieldset>

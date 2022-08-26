@@ -1,7 +1,6 @@
 import Navbar from "./Navbar/Navbar";
 import Header from "./Header/Header";
-import Button from "./Button/Button";
-import Card from "./Card/Card";
+import Card from "./Card";
 import Form from "./forms/Form";
 import {
   TextField,
@@ -19,7 +18,6 @@ import ImageFilePreview from "../pages/Posts/forms/ImageFilePreview";
 export {
   Navbar,
   Header,
-  Button,
   Card,
   Form,
   TextField,

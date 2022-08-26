@@ -1,5 +1,4 @@
 import * as React from "react";
-import Button from "../Button/Button";
 import "./Form.scss";
 
 interface IFormProps {
@@ -29,11 +28,7 @@ export default function Form({
       {title ? <h1 className="Form__title">{title}</h1> : null}
       {children}
 
-      {submitText ? (
-        <Button type="submit" btnStyle="primary">
-          {submitText}
-        </Button>
-      ) : null}
+      {submitText ? <button type="submit">{submitText}</button> : null}
       <div className="Form__error">{error}</div>
       {footer}
     </form>
