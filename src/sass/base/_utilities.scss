@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../abstracts/variables" as var;
 
 .flex {
@@ -21,8 +22,16 @@
   flex-wrap: nowrap;
 }
 
+.justify-start {
+  justify-content: start;
+}
+
 .justify-center {
   justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
 }
 
 .align-center {
@@ -36,6 +45,18 @@
 .grid {
   display: grid;
   gap: 1rem;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-3 {
+  gap: 3rem;
 }
 
 .flow > *:not(:first-child) {
@@ -69,49 +90,49 @@
 /* Background Color */
 
 .bg-primary {
-  background-color: hsl(var.$clr-primary);
+  background-color: var.$clr-primary;
 }
 
 .bg-primary-linear {
-  background: linear-gradient(
-    to right,
-    hsl(var.$clr-primary),
-    hsl(var.$clr-primary-alt)
-  );
+  background: linear-gradient(to right, var.$clr-primary, var.$clr-primary-alt);
 }
 
 .bg-secondary {
-  background-color: hsl(var.$clr-secondary);
+  background-color: var.$clr-secondary;
 }
 
 .bg-secondary-linear {
   background: linear-gradient(
     to right,
-    hsl(var.$clr-secondary),
-    hsl(var.$clr-secondary-alt)
+    var.$clr-secondary,
+    var.$clr-secondary-alt
   );
 }
 
 .bg-tertiary {
-  background-color: hsl(var.$clr-tertiary);
+  background-color: var.$clr-tertiary;
 }
 
 .bg-accent {
-  background-color: hsl(var.$clr-accent);
+  background-color: var.$clr-accent;
 }
 
 .bg-light {
-  background-color: hsl(var.$clr-light);
+  background-color: var.$clr-light;
 }
 
 .bg-dark {
-  background-color: black;
+  background-color: var.$clr-dark;
+}
+
+.bg-gray {
+  background-color: color.scale(var.$clr-dark, $lightness: 85%);
 }
 
 .bg-success {
-  background-color: hsl(var.$clr-success);
+  background-color: var.$clr-success;
 }
 
 .bg-warning {
-  background-color: hsl(var.$clr-success);
+  background-color: var.$clr-success;
 }

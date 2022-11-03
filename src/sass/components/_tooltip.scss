@@ -1,0 +1,88 @@
+@use "../abstracts/variables" as var;
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+
+  .tooltip-trigger {
+    cursor: pointer;
+  }
+
+  .tooltip-text {
+    line-height: 1.5;
+    width: 150px;
+    background-color: var.$clr-dark;
+    color: var.$clr-light;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    position: absolute;
+    z-index: 1;
+    font-size: var.$fs-1;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.25);
+
+    &--top {
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &--top-start {
+      bottom: 125%;
+      right: 0;
+    }
+
+    &--top-end {
+      bottom: 125%;
+      left: 0;
+    }
+
+    &--right {
+      left: 125%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &--right-start {
+      left: 125%;
+      bottom: 0;
+    }
+
+    &--right-end {
+      left: 125%;
+      top: 0;
+    }
+
+    &--bottom {
+      top: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &--bottom-start {
+      top: 125%;
+      right: 0;
+    }
+
+    &--bottom-end {
+      top: 125%;
+      left: 0;
+    }
+
+    &--left {
+      right: 125%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &--left-start {
+      right: 125%;
+      bottom: 0;
+    }
+
+    &--left-end {
+      right: 125%;
+      top: 0;
+    }
+  }
+}

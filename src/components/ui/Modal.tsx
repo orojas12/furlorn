@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles/Modal.scss";
 
 export interface IModalProps {
   show: boolean;

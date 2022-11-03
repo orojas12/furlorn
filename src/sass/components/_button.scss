@@ -13,39 +13,39 @@
     cursor: pointer;
   }
 
+  &--block {
+    width: 100%;
+  }
+
   &--primary {
-    @extend .btn;
     background: linear-gradient(
       to right,
-      hsl(var.$clr-primary),
-      hsl(var.$clr-primary-alt)
+      var.$clr-primary,
+      var.$clr-primary-alt
     );
     background-origin: border-box;
-    color: hsl(var.$clr-light);
+    color: var.$clr-light;
 
     &-outline {
-      @extend .btn;
-      border: solid 2px hsl(var.$clr-primary);
-      background-color: hsl(var.$clr-light);
-      color: hsl(var.$clr-primary);
+      border: solid 2px var.$clr-primary;
+      background-color: var.$clr-light;
+      color: var.$clr-primary;
     }
   }
 
   &--secondary {
-    @extend .btn;
     background: linear-gradient(
       to right,
-      hsl(var.$clr-secondary),
-      hsl(var.$clr-secondary-alt)
+      var.$clr-secondary,
+      var.$clr-secondary-alt
     );
     background-origin: border-box;
-    color: hsl(var.$clr-light);
+    color: var.$clr-light;
 
     &-outline {
-      @extend .btn;
-      border: solid 2px hsl(var.$clr-secondary);
-      background-color: hsl(var.$clr-light);
-      color: hsl(var.$clr-secondary);
+      border: solid 2px var.$clr-secondary;
+      background-color: var.$clr-light;
+      color: var.$clr-secondary;
     }
   }
 }

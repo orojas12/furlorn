@@ -1,14 +1,14 @@
 /* Colors - hsl */
-$clr-primary: 211 100% 35%;
-$clr-primary-alt: 195 91% 41%;
-$clr-secondary: 22 100% 55%;
-$clr-secondary-alt: 38 100% 50%;
-$clr-tertiary: 38 100% 85%;
-$clr-accent: 51 100% 55%;
-$clr-warning: 7 100% 50%;
-$clr-success: 109 90% 37%;
-$clr-light: 0 0% 97%;
-$clr-dark: 211 24% 13%;
+$clr-primary: hsl(211, 100%, 35%);
+$clr-primary-alt: hsl(195, 91%, 41%);
+$clr-secondary: hsl(22, 100%, 55%);
+$clr-secondary-alt: hsl(38, 100%, 50%);
+$clr-tertiary: hsl(38, 100%, 85%);
+$clr-accent: hsl(51, 100%, 55%);
+$clr-warning: hsl(7, 100%, 50%);
+$clr-success: hsl(109, 90%, 37%);
+$clr-light: hsl(0, 0%, 97%);
+$clr-dark: hsl(211, 24%, 13%);
 
 /* Font Sizes - 1.414 scale at fs-3 and above*/
 $fs-8: 9.044rem;

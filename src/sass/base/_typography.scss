@@ -75,17 +75,29 @@
 }
 
 .text-primary {
-  color: hsl(var.$clr-primary);
+  color: var.$clr-primary;
 }
 
 .text-secondary {
-  color: hsl(var.$clr-secondary);
+  color: var.$clr-secondary;
 }
 
 .text-light {
-  color: hsl(var.$clr-light);
+  color: var.$clr-light;
 }
 
 .text-dark {
-  color: hsl(var.$clr-dark);
+  color: var.$clr-dark;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
