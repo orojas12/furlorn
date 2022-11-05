@@ -1,29 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Badge, Tooltip } from "../ui";
 
 export interface IFormInputProps {
-  key: number;
+  key?: number;
   name: string;
   type: string;
   label: string;
   value?: any;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-  required: boolean;
-  errorMsg: string;
+  onChange?: React.ChangeEventHandler<HTMLElement>;
+  required?: boolean;
+  errorMsg?: string;
   description?: string;
   pattern?: string;
-  hint?: string;
   formId?: string;
+  validate?: (input: any) => boolean;
 }
 
 export default function FormInput(props: IFormInputProps) {
+  const [isValid, setIsValid] = useState(true);
+
   const badge = !props.required ? <Badge>optional</Badge> : "";
-  const { label, errorMsg, description, onChange, formId, ...inputProps } =
-    props;
+  const {
+    label,
+    errorMsg,
+    description,
+    onChange,
+    validate,
+    formId,
+    ...inputProps
+  } = props;
   const inputId = `${props.formId}_${inputProps.name}`;
   const descId = `desc_${inputId}`;
   const errorId = `error_${inputId}`;
-  const hint = props.hint ? (
+  const hint = props.description ? (
     <Tooltip
       id={descId}
       position="right-start"
@@ -48,14 +57,17 @@ export default function FormInput(props: IFormInputProps) {
       </div>
       <input
         id={inputId}
-        onChange={onChange}
+        onChange={(e) => {
+          if (onChange) onChange(e);
+          if (validate) setIsValid(validate(e.target.value));
+        }}
         aria-errormessage={errorId}
         aria-describedby={descId}
+        className={!isValid ? "invalid" : ""}
         {...inputProps}
       />
-      <span id={errorId}>{errorMsg}</span>
-      <div id={descId} className="form-input__description">
-        {description}
+      <div id={errorId} className="input-error">
+        {!isValid ? errorMsg : ""}
       </div>
     </div>
   );

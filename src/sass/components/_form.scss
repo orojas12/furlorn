@@ -10,6 +10,7 @@
   flex-direction: column;
   gap: 0.8rem;
   width: 100%;
+  margin-bottom: 1rem;
 
   .input-header {
     display: flex;
@@ -29,6 +30,12 @@
     }
   }
 
+  .input-error {
+    height: 2rem;
+    color: var.$clr-warning;
+    font-size: var.$fs-2;
+  }
+
   input {
     outline: none;
     width: 100%;
@@ -37,22 +44,12 @@
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
     padding: 0.8rem 1.6rem;
 
-    + span {
-      display: none;
-      color: var.$clr-warning;
-      font-size: var.$fs-2;
-    }
-
     &:focus {
       border: solid 1px var.$clr-primary;
     }
+  }
 
-    &:invalid {
-      border-color: var.$clr-warning;
-
-      + span {
-        display: block;
-      }
-    }
+  .invalid {
+    border-color: var.$clr-warning !important;
   }
 }
