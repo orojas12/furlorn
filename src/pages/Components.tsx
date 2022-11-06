@@ -7,7 +7,7 @@ export interface IComponentsProps {}
 export default function Components(props: IComponentsProps) {
   return (
     <div
-      className="container flex flex-column justify-center align-center flow"
+      className="flex flex-column justify-center align-center flow"
       style={{ minHeight: "inherit" }}
     >
       <h1 className="text-4xl ff-cursive spacing-tight">Display</h1>
@@ -26,7 +26,7 @@ export default function Components(props: IComponentsProps) {
       <Card />
       <Breadcrumb />
       <Badge>optional</Badge>
-      <FormInput
+      {/* <FormInput
         key={1}
         name="username"
         type="text"
@@ -37,8 +37,8 @@ export default function Components(props: IComponentsProps) {
         errorMsg="Username is too short."
         description="Username must be at least 3 characters long"
         pattern="[A-Za-z]{3,20}"
-      />
-      <Form
+      /> */}
+      {/* <Form
         id="testForm"
         inputs={[
           {
@@ -81,7 +81,7 @@ export default function Components(props: IComponentsProps) {
           password: "",
           confirmPassword: "",
         }}
-      />
+      /> */}
       <Tooltip
         id="testtooltip"
         position="left-start"

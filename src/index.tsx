@@ -1,17 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Components from "./pages/Components";
+import Login from "./pages/Login";
 import reportWebVitals from "./reportWebVitals";
-import { AuthProvider } from "./lib/auth/AuthProvider";
+import App from "./App";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          {/* <Route index element={<Home />} /> */}
+          <Route path="login" element={<Login />} />
+          <Route path="components" element={<Components />} />
+          {/* <Route path="signup" element={<SignUp />} />
+            <Route path="posts">
+              <Route index element={<Posts />} />
+              <Route path=":id" element={<Post />} />
+              <Route path=":id/edit" element={<EditPost />} />
+              <Route path="new/*" element={<NewPost />} />
+            </Route> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

@@ -14,3 +14,9 @@
 @use "components/form";
 @use "components/badge";
 @use "components/tooltip";
+
+@use "pages/login";
+
+.App {
+  min-height: 100vh;
+}
