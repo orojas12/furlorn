@@ -1,39 +1,28 @@
-import React from "react";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Components from "./pages/Components";
+import Login from "./pages/Login";
 
-import "./App.scss";
-import EditPost from "./pages/Posts/EditPost";
-import PetDetailsForm from "./pages/Posts/forms/PetDetailsForm";
-import PostDetailsForm from "./pages/Posts/forms/PostDetailsForm";
-import PostImagesForm from "./pages/Posts/forms/PostImagesForm";
-import NewPost from "./pages/Posts/NewPost";
-import Post from "./pages/Posts/Post";
-
-const Home = React.lazy(() => import("./pages/Home/Home"));
-const SignUp = React.lazy(() => import("./pages/SignUp/SignUp"));
-const Login = React.lazy(() => import("./pages/Login/Login"));
-const Posts = React.lazy(() => import("./pages/Posts/Posts"));
+import "./sass/main.scss";
 
 function App() {
   return (
-    <div className="App">
-      <React.Suspense fallback={<h1>Loading...</h1>}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/">
-              <Route index element={<Home />} />
-              <Route path="login" element={<Login />} />
-              <Route path="signup" element={<SignUp />} />
-              <Route path="posts">
-                <Route index element={<Posts />} />
-                <Route path=":id" element={<Post />} />
-                <Route path=":id/edit" element={<EditPost />} />
-                <Route path="new/*" element={<NewPost />} />
-              </Route>
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </React.Suspense>
+    <div className="App bg-light ff-sans">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            {/* <Route index element={<Home />} /> */}
+            <Route path="login" element={<Login />} />
+            <Route path="components" element={<Components />} />
+            {/* <Route path="signup" element={<SignUp />} />
+            <Route path="posts">
+              <Route index element={<Posts />} />
+              <Route path=":id" element={<Post />} />
+              <Route path=":id/edit" element={<EditPost />} />
+              <Route path="new/*" element={<NewPost />} />
+            </Route> */}
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

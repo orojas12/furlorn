@@ -1,0 +1,51 @@
+@use "../abstracts/variables" as var;
+
+.btn {
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 1em 2em;
+  border: solid 2px transparent;
+  border-radius: 50px;
+  font-size: var.$fs-2;
+  letter-spacing: var.$spacing-wide;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &--primary {
+    background: linear-gradient(
+      to right,
+      var.$clr-primary,
+      var.$clr-primary-alt
+    );
+    background-origin: border-box;
+    color: var.$clr-light;
+
+    &-outline {
+      border: solid 2px var.$clr-primary;
+      background-color: var.$clr-light;
+      color: var.$clr-primary;
+    }
+  }
+
+  &--secondary {
+    background: linear-gradient(
+      to right,
+      var.$clr-secondary,
+      var.$clr-secondary-alt
+    );
+    background-origin: border-box;
+    color: var.$clr-light;
+
+    &-outline {
+      border: solid 2px var.$clr-secondary;
+      background-color: var.$clr-light;
+      color: var.$clr-secondary;
+    }
+  }
+}

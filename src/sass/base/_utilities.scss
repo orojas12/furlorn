@@ -1,0 +1,138 @@
+@use "sass:color";
+@use "../abstracts/variables" as var;
+
+.flex {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.nowrap {
+  flex-wrap: nowrap;
+}
+
+.justify-start {
+  justify-content: start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-3 {
+  gap: 3rem;
+}
+
+.flow > *:not(:first-child) {
+  margin-top: 1.6rem;
+}
+
+.container {
+  padding-inline: 32px;
+  margin-inline: auto;
+  width: 100%;
+  max-width: var.$bp-xl;
+
+  &--fluid {
+    max-width: 100%;
+  }
+}
+
+/* Visually hide element but allow it to be read by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Background Color */
+
+.bg-primary {
+  background-color: var.$clr-primary;
+}
+
+.bg-primary-linear {
+  background: linear-gradient(to right, var.$clr-primary, var.$clr-primary-alt);
+}
+
+.bg-secondary {
+  background-color: var.$clr-secondary;
+}
+
+.bg-secondary-linear {
+  background: linear-gradient(
+    to right,
+    var.$clr-secondary,
+    var.$clr-secondary-alt
+  );
+}
+
+.bg-tertiary {
+  background-color: var.$clr-tertiary;
+}
+
+.bg-accent {
+  background-color: var.$clr-accent;
+}
+
+.bg-light {
+  background-color: var.$clr-light;
+}
+
+.bg-dark {
+  background-color: var.$clr-dark;
+}
+
+.bg-gray {
+  background-color: color.scale(var.$clr-dark, $lightness: 85%);
+}
+
+.bg-success {
+  background-color: var.$clr-success;
+}
+
+.bg-warning {
+  background-color: var.$clr-success;
+}
