@@ -3,6 +3,7 @@ import FormInput, { IFormInputProps } from "./FormInput";
 
 export interface IFormProps {
   id: string;
+  title: string;
   inputs: IFormInputProps[];
   initialState: any;
   submitText?: string;
@@ -31,6 +32,7 @@ export default function Form(props: IFormProps) {
 
   return (
     <form className="form" onSubmit={onSubmit}>
+      <h2 className="form-title">{props.title}</h2>
       {props.inputs.map((input) => (
         <FormInput
           {...input}

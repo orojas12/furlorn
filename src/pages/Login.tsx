@@ -16,6 +16,7 @@ export default function Login(props: ILogInProps) {
     <div className="Login">
       <Form
         id="loginForm"
+        title="Log In"
         inputs={[
           {
             key: 1,
@@ -38,7 +39,7 @@ export default function Login(props: ILogInProps) {
         ]}
         initialState={{ username: "", password: "" }}
         onSubmit={login}
-      ></Form>
+      />
     </div>
   );
 }
