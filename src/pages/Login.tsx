@@ -9,7 +9,7 @@ export default function Login(props: ILogInProps) {
 
   async function login(data: FormData) {
     // authenticate user
-    navigate("/home");
+    navigate("/");
   }
 
   return (

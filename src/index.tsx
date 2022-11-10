@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Components from "./pages/Components";
-import Login from "./pages/Login";
+import { Components, Home, Login } from "./pages";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 
@@ -14,6 +13,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
           {/* <Route index element={<Home />} /> */}
           <Route path="login" element={<Login />} />
           <Route path="components" element={<Components />} />

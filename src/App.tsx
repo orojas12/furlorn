@@ -3,7 +3,7 @@ import "./sass/main.scss";
 
 function App() {
   return (
-    <div className="App container container--fluid bg-light ff-sans">
+    <div className="App bg-light ff-sans">
       <Outlet />
     </div>
   );
