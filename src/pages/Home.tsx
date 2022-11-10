@@ -1,4 +1,3 @@
-import heroImg from "../assets/images/hero-img.png";
 import waveSvg from "../assets/images/wave.svg";
 
 export interface IHomeProps {}
@@ -18,16 +17,19 @@ export default function Home(props: IHomeProps) {
               more.
             </h2>
             <div className="hero__buttons">
-              <button className="btn btn--primary">I Lost My Pet</button>
-              <button className="btn btn--secondary">I Found A Pet</button>
+              <button className="btn btn--block btn--primary">
+                I Lost My Pet
+              </button>
+              <button className="btn btn--block btn--secondary">
+                I Found A Pet
+              </button>
             </div>
           </div>
-          <div className="hero__right">
-            <img src={heroImg} alt="A kitten and a puppy" />
-          </div>
+          <div className="hero__right"></div>
         </div>
         <img src={waveSvg} alt="Hero bottom border" style={{ width: "100%" }} />
       </header>
+      <main></main>
     </article>
   );
 }
