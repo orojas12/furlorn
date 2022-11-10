@@ -1,0 +1,43 @@
+.Home {
+  header {
+    background-image: url("../../assets/images/paw-bg.svg");
+    background-size: cover;
+    position: relative;
+  }
+
+  .hero {
+    display: flex;
+    gap: 2rem;
+    height: 70vh;
+    position: relative;
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.4rem;
+      width: 50%;
+    }
+
+    &__right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+
+      img {
+        width: 100%;
+        max-width: 560px;
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      gap: 1.6rem;
+
+      .btn {
+        width: 20rem;
+      }
+    }
+  }
+}
