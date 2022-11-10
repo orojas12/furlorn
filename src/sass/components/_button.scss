@@ -8,10 +8,7 @@
   border-radius: 50px;
   font-size: var.$fs-2;
   letter-spacing: var.$spacing-wide;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   &--block {
     width: 100%;
